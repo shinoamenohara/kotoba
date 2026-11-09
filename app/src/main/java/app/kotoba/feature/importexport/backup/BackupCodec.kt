@@ -93,14 +93,15 @@ object BackupCodec {
         require(h.schemaVersion <= db.version) { "Backup was made by a newer app version" }
         db.execSQL("PRAGMA defer_foreign_keys = ON")
         val existing = userTables(db).toSet()
-        val tables = root["tables"]?.jsonObject ?: return
+        val tables = root["tables"]?.jsonObject?.filterKeys { it in existing } ?: return
+        // Clear everything first: ON DELETE actions (cascade / set null) fire even with deferred
+        // foreign keys and would otherwise damage rows already restored into child tables.
+        tables.keys.forEach { db.execSQL("DELETE FROM `$it`") }
         for ((table, value) in tables) {
-            if (table !in existing) continue
             val columns = db.query("PRAGMA table_info(`$table`)").use { c ->
                 val idx = c.getColumnIndex("name")
                 buildSet { while (c.moveToNext()) add(c.getString(idx)) }
             }
-            db.execSQL("DELETE FROM `$table`")
             (value as? JsonArray)?.forEach { row ->
                 val cv = ContentValues()
                 (row as? JsonObject)?.forEach { (col, v) -> if (col in columns) putValue(cv, col, v, filesDir) }
