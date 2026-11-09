@@ -304,6 +304,7 @@ interface ChatDao {
     @Query("SELECT * FROM chat_messages WHERE conversationId = :id ORDER BY createdAt, id") fun observeMessages(id: Long): Flow<List<ChatMessageEntity>>
     @Query("SELECT * FROM chat_messages WHERE conversationId = :id ORDER BY createdAt, id") suspend fun messages(id: Long): List<ChatMessageEntity>
     @Query("DELETE FROM chat_messages WHERE conversationId = :id") suspend fun clearMessages(id: Long)
+    @Query("DELETE FROM chat_messages WHERE id = :id") suspend fun deleteMessage(id: Long)
 }
 
 /** Bulk helpers used by backup/restore. */
