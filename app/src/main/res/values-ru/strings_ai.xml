@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Errors -->
+    <string name="ai_err_not_configured">ИИ ещё не настроен. Добавьте API-ключ в настройках ИИ.</string>
+    <string name="ai_err_invalid_key">API-ключ отклонён. Проверьте его в настройках ИИ.</string>
+    <string name="ai_err_rate_limited">Слишком много запросов. Подождите немного и повторите.</string>
+    <string name="ai_err_quota">Квота или баланс у провайдера исчерпаны.</string>
+    <string name="ai_err_local_limit">Дневной лимит ИИ исчерпан. Его можно увеличить в настройках ИИ.</string>
+    <string name="ai_err_network">Нет связи с сервисом ИИ. Проверьте интернет.</string>
+    <string name="ai_err_server">У сервиса ИИ проблемы. Попробуйте позже.</string>
+    <string name="ai_err_bad_request">Провайдер отклонил запрос (проверьте название модели и базовый URL).</string>
+    <string name="ai_err_bad_response">ИИ ответил в неожиданном формате. Попробуйте ещё раз.</string>
+    <string name="ai_err_unknown">Что-то пошло не так с запросом к ИИ.</string>
+
+    <!-- Tutor -->
+    <string name="ai_tutor_title">ИИ-репетитор</string>
+    <string name="ai_conversations">Диалоги</string>
+    <string name="ai_new_chat">Новый чат</string>
+    <string name="ai_no_conversations">Диалогов пока нет</string>
+    <string name="ai_rename">Переименовать</string>
+    <string name="ai_delete_conversation">Удалить диалог?</string>
+    <string name="ai_exercises">ИИ-упражнения</string>
+    <string name="ai_not_configured_title">Подключите ИИ-провайдера</string>
+    <string name="ai_not_configured_message">Репетитор работает с вашим API-ключом (OpenAI, Claude, Gemini, OpenRouter…) или с локальной моделью, например Ollama.</string>
+    <string name="ai_open_settings">Открыть настройки ИИ</string>
+    <string name="ai_welcome_title">Привет! Я ваш языковой репетитор</string>
+    <string name="ai_welcome_message">Спрашивайте что угодно про %1$s: слова, грамматику, нюансы — или потренируйте диалог. Начните с быстрого действия.</string>
+    <string name="ai_input_hint">Спросите репетитора…</string>
+    <string name="ai_send">Отправить</string>
+    <string name="ai_copy">Копировать</string>
+    <string name="ai_ask">Спросить</string>
+    <string name="ai_add_words">Добавить слова</string>
+    <string name="ai_add_words_title">Добавить слова из ответа</string>
+    <string name="ai_add_words_deck">Выбранные слова попадут в колоду «%1$s».</string>
+    <string name="ai_add_n_words">Добавить слова (%1$d)</string>
+    <string name="ai_words_added">Добавлено: %1$d · уже в коллекции: %2$d</string>
+    <string name="ai_select_all">Выбрать все</string>
+    <string name="ai_select_none">Снять все</string>
+    <string name="ai_stats_needed">Для этого действия нужен доступ к статистике обучения.</string>
+    <string name="ai_stats_enable">Разрешить</string>
+    <string name="ai_input_word">Слово или выражение</string>
+    <string name="ai_input_words">Слова для сравнения (через запятую)</string>
+    <string name="ai_input_topic">Тема</string>
+    <string name="ai_input_grammar">Грамматическая тема или предложение</string>
+    <string name="ai_input_expression">Идиома или устойчивое выражение</string>
+
+    <!-- Quick actions -->
+    <string name="ai_qa_explain_word">Объяснить слово</string>
+    <string name="ai_qa_explain_word_prompt">Объясни слово «%1$s» (%2$s): значение, чтение/произношение, нюансы, стиль, частые сочетания и 3 примера с переводом.</string>
+    <string name="ai_qa_grammar">Объяснить грамматику</string>
+    <string name="ai_qa_grammar_prompt">Объясни простыми словами грамматику (%2$s): структура, типичные ошибки и примеры. Тема: %1$s</string>
+    <string name="ai_qa_compare">Сравнить похожие слова</string>
+    <string name="ai_qa_compare_prompt">Чем отличаются эти слова (%2$s): %1$s? Объясни нюансы и дай контрастные примеры.</string>
+    <string name="ai_qa_mistakes">Разобрать мои ошибки</string>
+    <string name="ai_qa_mistakes_prompt">Посмотри на мои слабые слова и слова, которые я путаю (%2$s). Разбери мои типичные ошибки и дай советы и ассоциации для каждого.</string>
+    <string name="ai_qa_why_errors">Почему я ошибаюсь?</string>
+    <string name="ai_qa_why_errors_prompt">По моей статистике (%2$s): почему я повторяю одни и те же ошибки? Найди закономерности и предложи конкретный план.</string>
+    <string name="ai_qa_idiom">Объяснить идиому</string>
+    <string name="ai_qa_idiom_prompt">Объясни идиому / устойчивое выражение «%1$s» (%2$s): буквальный и реальный смысл, происхождение, когда употреблять, примеры.</string>
+    <string name="ai_qa_examples">Примеры употребления</string>
+    <string name="ai_qa_examples_prompt">Дай 6 естественных примеров (%2$s) со словом «%1$s» разного уровня сложности, каждый с переводом.</string>
+    <string name="ai_qa_thematic">Тематический словарь</string>
+    <string name="ai_qa_thematic_prompt">Составь список из 15 полезных слов (%2$s) по теме «%1$s», по одному на строку в формате `слово — перевод` (с чтением, где нужно).</string>
+    <string name="ai_qa_review_today">Что повторить сегодня?</string>
+    <string name="ai_qa_review_today_prompt">По моей статистике (%2$s): что мне стоит повторить сегодня и как? Составь короткий план на 15 минут.</string>
+    <string name="ai_qa_dialogue">Практика диалога</string>
+    <string name="ai_qa_dialogue_prompt">Давай потренируем диалог (%2$s). Ситуация: %1$s. Начинай ты и исправляй мои ошибки по ходу.</string>
+
+    <!-- Dialogue scenarios -->
+    <string name="ai_scenario_pick">Выберите ситуацию: репетитор сыграет собеседника и будет вас поправлять.</string>
+    <string name="ai_scenario_custom">Своя ситуация</string>
+    <string name="ai_scenario_cafe">В кафе</string>
+    <string name="ai_scenario_airport">В аэропорту</string>
+    <string name="ai_scenario_hotel">Заселение в отель</string>
+    <string name="ai_scenario_job_interview">Собеседование</string>
+    <string name="ai_scenario_doctor">У врача</string>
+    <string name="ai_scenario_shopping">Шопинг</string>
+    <string name="ai_scenario_restaurant">Заказ в ресторане</string>
+    <string name="ai_scenario_new_friend">Знакомство</string>
+    <string name="ai_scenario_anime_convention">Аниме-фестиваль</string>
+    <string name="ai_scenario_konbini">В комбини</string>
+    <string name="ai_scenario_izakaya">Вечер в идзакае</string>
+    <string name="ai_scenario_market">На рынке (торг)</string>
+    <string name="ai_scenario_tea_house">В чайной</string>
+    <string name="ai_scenario_small_talk">Светская беседа с коллегой</string>
+
+    <!-- Quiz -->
+    <string name="ai_quiz_loading">Готовлю упражнения по вашим слабым словам…</string>
+    <string name="ai_quiz_progress">Вопрос %1$d из %2$d</string>
+    <string name="ai_quiz_check">Проверить</string>
+    <string name="ai_quiz_correct">Верно!</string>
+    <string name="ai_quiz_wrong">Правильный ответ: %1$s</string>
+    <string name="ai_quiz_score">Верно %1$d из %2$d</string>
+    <string name="ai_quiz_linked">Прогресс обновлён для слов из коллекции: %1$d</string>
+    <string name="ai_quiz_again">Новые упражнения</string>
+
+    <!-- Settings -->
+    <string name="ai_settings_title">Настройки ИИ</string>
+    <string name="ai_provider">Провайдер</string>
+    <string name="ai_api_key">API-ключ</string>
+    <string name="ai_key_saved">Ключ сохранён</string>
+    <string name="ai_key_remove">Удалить</string>
+    <string name="ai_get_key">Получить ключ</string>
+    <string name="ai_connection">Подключение</string>
+    <string name="ai_base_url">Базовый URL</string>
+    <string name="ai_base_url_hint">Оставьте пустым для стандартного адреса; укажите для прокси.</string>
+    <string name="ai_base_url_hint_local">Адрес вашего сервера, например http://192.168.1.10:11434/v1 для Ollama.</string>
+    <string name="ai_model">Модель</string>
+    <string name="ai_fetch_models">Загрузить список моделей</string>
+    <string name="ai_models_fetched">Доступно моделей: %1$d</string>
+    <string name="ai_test_connection">Проверить подключение</string>
+    <string name="ai_test_ok">Работает! Ответ: «%1$s» · моделей: %2$d</string>
+    <string name="ai_generation">Генерация</string>
+    <string name="ai_temperature">Температура</string>
+    <string name="ai_temperature_hint">Ниже — точнее, выше — креативнее.</string>
+    <string name="ai_max_tokens">Макс. токенов в ответе</string>
+    <string name="ai_limits">Дневные лимиты</string>
+    <string name="ai_limits_hint">Защищают от неожиданных расходов. При достижении лимита запросы останавливаются.</string>
+    <string name="ai_daily_tokens">Токенов в день</string>
+    <string name="ai_daily_requests">Запросов в день</string>
+    <string name="ai_usage_today">Использовано сегодня</string>
+    <string name="ai_usage_tokens">Токены</string>
+    <string name="ai_usage_requests">Запросы</string>
+    <string name="ai_privacy">Конфиденциальность</string>
+    <string name="ai_share_stats">Делиться статистикой обучения с репетитором</string>
+    <string name="ai_share_stats_hint">Слабые слова, путаницы и точность делают советы персональными.</string>
+    <string name="ai_keys_note">API-ключи шифруются Android Keystore и хранятся только на этом устройстве. Они не попадают в резервные копии и отправляются только вашему провайдеру.</string>
+
+    <!-- Generator -->
+    <string name="ai_generator_title">Генератор колод</string>
+    <string name="ai_gen_source">Источник</string>
+    <string name="ai_gen_source_document">Документ</string>
+    <string name="ai_gen_source_paste">Вставить текст</string>
+    <string name="ai_gen_source_shared">Из «Поделиться»</string>
+    <string name="ai_gen_paste_hint">Вставьте статью, текст песни, субтитры, главу…</string>
+    <string name="ai_gen_chars">Символов: %1$d</string>
+    <string name="ai_gen_no_documents">Пока нет импортированных книг или статей. Импортируйте в разделе «Чтение» или вставьте текст.</string>
+    <string name="ai_gen_pick_document">Выберите документ</string>
+    <string name="ai_gen_err_no_text">Сначала добавьте текст.</string>
+    <string name="ai_gen_err_no_words">В этом тексте не найдено новых слов.</string>
+    <string name="ai_gen_err_read">Не удалось прочитать текст документа.</string>
+    <string name="ai_gen_options">Параметры</string>
+    <string name="ai_gen_count">Количество слов</string>
+    <string name="ai_gen_level">Целевой уровень</string>
+    <string name="ai_gen_any">Любой</string>
+    <string name="ai_gen_frequency">Частотность</string>
+    <string name="ai_gen_freq_any">Сбалансированно</string>
+    <string name="ai_gen_freq_common">Частые</string>
+    <string name="ai_gen_freq_rare">Редкие</string>
+    <string name="ai_gen_pos">Части речи (ничего = все)</string>
+    <string name="ai_gen_topic">Тематика (необязательно)</string>
+    <string name="ai_gen_exclude_known">Пропускать слова, которые уже есть в коллекции</string>
+    <string name="ai_gen_exclude_duplicates">Не создавать дубликаты</string>
+    <string name="ai_gen_examples">Добавлять примеры предложений</string>
+    <string name="ai_gen_deck_name">Название колоды</string>
+    <string name="ai_gen_mode_ai">ИИ выберет самые полезные слова, приведёт словарные формы, чтения, переводы и примеры.</string>
+    <string name="ai_gen_mode_offline">Офлайн-режим: слова выбираются по частотности и переводятся на устройстве. Подключите ИИ для лучшего результата.</string>
+    <string name="ai_gen_generate">Сгенерировать</string>
+    <string name="ai_gen_stage_segment">Анализирую текст…</string>
+    <string name="ai_gen_stage_ai">ИИ подбирает слова…</string>
+    <string name="ai_gen_stage_translate">Перевожу на устройстве…</string>
+    <string name="ai_gen_review_hint">Найдено слов: %1$d. Ничего не добавится, пока вы не отметите слова и не сохраните.</string>
+    <string name="ai_gen_partial">Показаны слова, полученные до ошибки.</string>
+    <string name="ai_gen_fallback">Вместо ИИ использован офлайн-перевод.</string>
+    <string name="ai_gen_group_topic">По темам</string>
+    <string name="ai_gen_group_difficulty">По сложности</string>
+    <string name="ai_gen_diff_easy">🟢 Лёгкие</string>
+    <string name="ai_gen_diff_medium">🟡 Средние</string>
+    <string name="ai_gen_diff_hard">🔴 Сложные</string>
+    <string name="ai_gen_no_translation">Нет перевода — нажмите «изменить»</string>
+    <string name="ai_gen_source_sentence">Из текста: %1$s</string>
+    <string name="ai_gen_done_title">Добавлено слов: %1$d</string>
+    <string name="ai_gen_done_duplicates">Пропущено дубликатов: %1$d</string>
+    <string name="ai_gen_study">Учить сейчас</string>
+    <string name="ai_gen_more">Сгенерировать ещё</string>
+    <string name="ai_field_term">Слово</string>
+    <string name="ai_field_reading">Чтение</string>
+    <string name="ai_field_translation">Перевод</string>
+    <string name="ai_field_example">Пример</string>
+    <string name="ai_field_example_translation">Перевод примера</string>
+
+    <!-- Parts of speech -->
+    <string name="ai_pos_noun">Сущ.</string>
+    <string name="ai_pos_verb">Глагол</string>
+    <string name="ai_pos_adjective">Прил.</string>
+    <string name="ai_pos_adverb">Наречие</string>
+    <string name="ai_pos_pronoun">Местоим.</string>
+    <string name="ai_pos_preposition">Предлог</string>
+    <string name="ai_pos_conjunction">Союз</string>
+    <string name="ai_pos_interjection">Междом.</string>
+    <string name="ai_pos_particle">Частица</string>
+    <string name="ai_pos_counter">Счётное слово</string>
+    <string name="ai_pos_phrase">Фраза</string>
+    <string name="ai_pos_idiom">Идиома</string>
+    <string name="ai_pos_other">Другое</string>
+</resources>

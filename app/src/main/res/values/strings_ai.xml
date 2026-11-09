@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Errors -->
+    <string name="ai_err_not_configured">AI is not set up yet. Add an API key in AI settings.</string>
+    <string name="ai_err_invalid_key">The API key was rejected. Check it in AI settings.</string>
+    <string name="ai_err_rate_limited">Too many requests right now. Wait a moment and try again.</string>
+    <string name="ai_err_quota">Your provider quota or balance is exhausted.</string>
+    <string name="ai_err_local_limit">Daily AI limit reached. You can raise it in AI settings.</string>
+    <string name="ai_err_network">No connection to the AI service. Check your internet.</string>
+    <string name="ai_err_server">The AI service is having problems. Try again later.</string>
+    <string name="ai_err_bad_request">The provider rejected the request (check the model name and base URL).</string>
+    <string name="ai_err_bad_response">The AI answered in an unexpected format. Try again.</string>
+    <string name="ai_err_unknown">Something went wrong with the AI request.</string>
+
+    <!-- Tutor -->
+    <string name="ai_tutor_title">AI Tutor</string>
+    <string name="ai_conversations">Conversations</string>
+    <string name="ai_new_chat">New chat</string>
+    <string name="ai_no_conversations">No conversations yet</string>
+    <string name="ai_rename">Rename</string>
+    <string name="ai_delete_conversation">Delete conversation?</string>
+    <string name="ai_exercises">AI exercises</string>
+    <string name="ai_not_configured_title">Connect an AI provider</string>
+    <string name="ai_not_configured_message">The tutor works with your own API key (OpenAI, Claude, Gemini, OpenRouter…) or a local model such as Ollama.</string>
+    <string name="ai_open_settings">Open AI settings</string>
+    <string name="ai_welcome_title">Hi! I\'m your language tutor</string>
+    <string name="ai_welcome_message">Ask me anything about %1$s: words, grammar, nuances, or practise a dialogue. Pick a quick action to start.</string>
+    <string name="ai_input_hint">Ask the tutor…</string>
+    <string name="ai_send">Send</string>
+    <string name="ai_copy">Copy</string>
+    <string name="ai_ask">Ask</string>
+    <string name="ai_add_words">Add words</string>
+    <string name="ai_add_words_title">Add words from this reply</string>
+    <string name="ai_add_words_deck">Selected words go to the deck “%1$s”.</string>
+    <string name="ai_add_n_words">Add words (%1$d)</string>
+    <string name="ai_words_added">Added: %1$d · already in collection: %2$d</string>
+    <string name="ai_select_all">Select all</string>
+    <string name="ai_select_none">Select none</string>
+    <string name="ai_stats_needed">This action needs access to your learning statistics.</string>
+    <string name="ai_stats_enable">Allow</string>
+    <string name="ai_input_word">Word or expression</string>
+    <string name="ai_input_words">Words to compare (comma-separated)</string>
+    <string name="ai_input_topic">Topic</string>
+    <string name="ai_input_grammar">Grammar point or sentence</string>
+    <string name="ai_input_expression">Idiom or set expression</string>
+
+    <!-- Quick actions -->
+    <string name="ai_qa_explain_word">Explain a word</string>
+    <string name="ai_qa_explain_word_prompt">Explain the %2$s word “%1$s”: meaning, reading/pronunciation, nuances, register, common collocations and 3 examples with translations.</string>
+    <string name="ai_qa_grammar">Explain grammar</string>
+    <string name="ai_qa_grammar_prompt">Explain this %2$s grammar point simply, with the structure, typical mistakes and examples: %1$s</string>
+    <string name="ai_qa_compare">Compare similar words</string>
+    <string name="ai_qa_compare_prompt">What is the difference between these %2$s words: %1$s? Explain the nuances and give contrasting examples.</string>
+    <string name="ai_qa_mistakes">Analyze my mistakes</string>
+    <string name="ai_qa_mistakes_prompt">Look at my weak words and the words I confuse in %2$s. Analyse my typical mistakes and give me tips and memory hooks for each.</string>
+    <string name="ai_qa_why_errors">Why do I keep making errors?</string>
+    <string name="ai_qa_why_errors_prompt">Based on my statistics in %2$s, why do I keep making the same errors? Find the patterns and suggest a concrete plan to fix them.</string>
+    <string name="ai_qa_idiom">Explain an idiom</string>
+    <string name="ai_qa_idiom_prompt">Explain the %2$s idiom / set expression “%1$s”: literal and real meaning, origin if interesting, when to use it, and examples.</string>
+    <string name="ai_qa_examples">Generate examples</string>
+    <string name="ai_qa_examples_prompt">Give me 6 natural example sentences in %2$s with “%1$s” at different levels, each with a translation.</string>
+    <string name="ai_qa_thematic">Thematic vocabulary</string>
+    <string name="ai_qa_thematic_prompt">Make a list of 15 useful %2$s words for the topic “%1$s”, one per line as `term — translation` (include the reading where relevant).</string>
+    <string name="ai_qa_review_today">What to review today?</string>
+    <string name="ai_qa_review_today_prompt">Based on my statistics in %2$s, what should I review today and how? Make a short plan for a 15-minute session.</string>
+    <string name="ai_qa_dialogue">Dialogue practice</string>
+    <string name="ai_qa_dialogue_prompt">Let\'s practise a dialogue in %2$s. Scenario: %1$s. You start; correct my mistakes as we go.</string>
+
+    <!-- Dialogue scenarios -->
+    <string name="ai_scenario_pick">Choose a situation; the tutor plays the other person and corrects you.</string>
+    <string name="ai_scenario_custom">Your own scenario</string>
+    <string name="ai_scenario_cafe">At a café</string>
+    <string name="ai_scenario_airport">At the airport</string>
+    <string name="ai_scenario_hotel">Hotel check-in</string>
+    <string name="ai_scenario_job_interview">Job interview</string>
+    <string name="ai_scenario_doctor">At the doctor\'s</string>
+    <string name="ai_scenario_shopping">Shopping</string>
+    <string name="ai_scenario_restaurant">Ordering at a restaurant</string>
+    <string name="ai_scenario_new_friend">Meeting a new friend</string>
+    <string name="ai_scenario_anime_convention">Anime convention</string>
+    <string name="ai_scenario_konbini">At a konbini</string>
+    <string name="ai_scenario_izakaya">Evening at an izakaya</string>
+    <string name="ai_scenario_market">At a street market (bargaining)</string>
+    <string name="ai_scenario_tea_house">At a tea house</string>
+    <string name="ai_scenario_small_talk">Small talk with a colleague</string>
+
+    <!-- Quiz -->
+    <string name="ai_quiz_loading">Preparing exercises for your weak words…</string>
+    <string name="ai_quiz_progress">Question %1$d of %2$d</string>
+    <string name="ai_quiz_check">Check</string>
+    <string name="ai_quiz_correct">Correct!</string>
+    <string name="ai_quiz_wrong">Correct answer: %1$s</string>
+    <string name="ai_quiz_score">%1$d of %2$d correct</string>
+    <string name="ai_quiz_linked">Progress updated for %1$d words in your collection</string>
+    <string name="ai_quiz_again">New exercises</string>
+
+    <!-- Settings -->
+    <string name="ai_settings_title">AI settings</string>
+    <string name="ai_provider">Provider</string>
+    <string name="ai_api_key">API key</string>
+    <string name="ai_key_saved">Key saved</string>
+    <string name="ai_key_remove">Remove</string>
+    <string name="ai_get_key">Get a key</string>
+    <string name="ai_connection">Connection</string>
+    <string name="ai_base_url">Base URL</string>
+    <string name="ai_base_url_hint">Leave empty for the default endpoint; set it for proxies.</string>
+    <string name="ai_base_url_hint_local">Address of your server, e.g. http://192.168.1.10:11434/v1 for Ollama.</string>
+    <string name="ai_model">Model</string>
+    <string name="ai_fetch_models">Load available models</string>
+    <string name="ai_models_fetched">%1$d models available</string>
+    <string name="ai_test_connection">Test connection</string>
+    <string name="ai_test_ok">Works! Reply: “%1$s” · models: %2$d</string>
+    <string name="ai_generation">Generation</string>
+    <string name="ai_temperature">Temperature</string>
+    <string name="ai_temperature_hint">Lower is more precise, higher is more creative.</string>
+    <string name="ai_max_tokens">Max output tokens</string>
+    <string name="ai_limits">Daily limits</string>
+    <string name="ai_limits_hint">Protects you from unexpected costs. Requests stop when a limit is reached.</string>
+    <string name="ai_daily_tokens">Tokens per day</string>
+    <string name="ai_daily_requests">Requests per day</string>
+    <string name="ai_usage_today">Used today</string>
+    <string name="ai_usage_tokens">Tokens</string>
+    <string name="ai_usage_requests">Requests</string>
+    <string name="ai_privacy">Privacy</string>
+    <string name="ai_share_stats">Share learning statistics with the tutor</string>
+    <string name="ai_share_stats_hint">Weak words, confusions and accuracy make the advice personal.</string>
+    <string name="ai_keys_note">API keys are encrypted with the Android Keystore and stored only on this device. They are never included in backups or sent anywhere except your provider.</string>
+
+    <!-- Generator -->
+    <string name="ai_generator_title">Deck generator</string>
+    <string name="ai_gen_source">Source</string>
+    <string name="ai_gen_source_document">Document</string>
+    <string name="ai_gen_source_paste">Paste text</string>
+    <string name="ai_gen_source_shared">Shared</string>
+    <string name="ai_gen_paste_hint">Paste an article, lyrics, subtitles, a chapter…</string>
+    <string name="ai_gen_chars">%1$d characters</string>
+    <string name="ai_gen_no_documents">No imported books or articles yet. Import one in Reading, or paste text.</string>
+    <string name="ai_gen_pick_document">Choose a document</string>
+    <string name="ai_gen_err_no_text">Add some text first.</string>
+    <string name="ai_gen_err_no_words">No new words found in this text.</string>
+    <string name="ai_gen_err_read">Could not read the document text.</string>
+    <string name="ai_gen_options">Options</string>
+    <string name="ai_gen_count">Number of words</string>
+    <string name="ai_gen_level">Target level</string>
+    <string name="ai_gen_any">Any</string>
+    <string name="ai_gen_frequency">Frequency</string>
+    <string name="ai_gen_freq_any">Balanced</string>
+    <string name="ai_gen_freq_common">Common</string>
+    <string name="ai_gen_freq_rare">Rare</string>
+    <string name="ai_gen_pos">Parts of speech (none = all)</string>
+    <string name="ai_gen_topic">Topic focus (optional)</string>
+    <string name="ai_gen_exclude_known">Skip words already in my collection</string>
+    <string name="ai_gen_exclude_duplicates">Don\'t create duplicates</string>
+    <string name="ai_gen_examples">Add example sentences</string>
+    <string name="ai_gen_deck_name">Deck name</string>
+    <string name="ai_gen_mode_ai">AI will pick the most useful words, give dictionary forms, readings, translations and examples.</string>
+    <string name="ai_gen_mode_offline">Offline mode: words are picked by frequency and translated on-device. Connect AI for better results.</string>
+    <string name="ai_gen_generate">Generate</string>
+    <string name="ai_gen_stage_segment">Analysing the text…</string>
+    <string name="ai_gen_stage_ai">AI is selecting words…</string>
+    <string name="ai_gen_stage_translate">Translating on device…</string>
+    <string name="ai_gen_review_hint">%1$d words found. Nothing is added until you select words and save.</string>
+    <string name="ai_gen_partial">Showing the words generated before the error.</string>
+    <string name="ai_gen_fallback">Used offline translation instead.</string>
+    <string name="ai_gen_group_topic">By topic</string>
+    <string name="ai_gen_group_difficulty">By difficulty</string>
+    <string name="ai_gen_diff_easy">🟢 Easy</string>
+    <string name="ai_gen_diff_medium">🟡 Medium</string>
+    <string name="ai_gen_diff_hard">🔴 Hard</string>
+    <string name="ai_gen_no_translation">No translation — tap edit to add</string>
+    <string name="ai_gen_source_sentence">From the text: %1$s</string>
+    <string name="ai_gen_done_title">%1$d words added</string>
+    <string name="ai_gen_done_duplicates">%1$d skipped as duplicates</string>
+    <string name="ai_gen_study">Study now</string>
+    <string name="ai_gen_more">Generate more</string>
+    <string name="ai_field_term">Word</string>
+    <string name="ai_field_reading">Reading</string>
+    <string name="ai_field_translation">Translation</string>
+    <string name="ai_field_example">Example</string>
+    <string name="ai_field_example_translation">Example translation</string>
+
+    <!-- Parts of speech -->
+    <string name="ai_pos_noun">Noun</string>
+    <string name="ai_pos_verb">Verb</string>
+    <string name="ai_pos_adjective">Adjective</string>
+    <string name="ai_pos_adverb">Adverb</string>
+    <string name="ai_pos_pronoun">Pronoun</string>
+    <string name="ai_pos_preposition">Preposition</string>
+    <string name="ai_pos_conjunction">Conjunction</string>
+    <string name="ai_pos_interjection">Interjection</string>
+    <string name="ai_pos_particle">Particle</string>
+    <string name="ai_pos_counter">Counter</string>
+    <string name="ai_pos_phrase">Phrase</string>
+    <string name="ai_pos_idiom">Idiom</string>
+    <string name="ai_pos_other">Other</string>
+</resources>
