@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_subtitle">Готовы к сегодняшним словам?</string>
+    <string name="home_greeting_morning">Доброе утро</string>
+    <string name="home_greeting_day">Добрый день</string>
+    <string name="home_greeting_evening">Добрый вечер</string>
+    <string name="home_greeting_night">Доброй ночи</string>
+    <string name="home_level">Уровень %1$d</string>
+    <string name="home_next_level">До следующего уровня</string>
+    <string name="home_achievements">Достижения</string>
+    <string name="home_daily_goal">Цель дня</string>
+    <string name="home_goal_done">Цель дня выполнена! 🎉</string>
+    <string name="home_due_count">%1$d к повторению</string>
+    <string name="home_new_count">%1$d новых слов</string>
+    <string name="home_today_stats">Сегодня: %1$d новых · %2$d повторений</string>
+    <string name="home_start_session">Начать занятие</string>
+    <string name="home_practice_more">Позаниматься ещё</string>
+    <string name="home_quick_review">Быстрое повторение</string>
+    <string name="home_quick_review_hint">Пара минут — самые важные слова</string>
+    <string name="home_minutes_short">%1$d мин</string>
+    <string name="home_weak_title">Слабые слова</string>
+    <plurals name="home_weak_words">
+        <item quantity="one">%1$d слово требует внимания</item>
+        <item quantity="few">%1$d слова требуют внимания</item>
+        <item quantity="many">%1$d слов требуют внимания</item>
+        <item quantity="other">%1$d слова требуют внимания</item>
+    </plurals>
+    <string name="home_train">Тренировать</string>
+    <string name="home_word_of_day">Слово дня</string>
+    <string name="home_continue_reading">Продолжить чтение</string>
+    <string name="home_empty_title">Библиотека пуста</string>
+    <string name="home_empty_message">Добавьте слова, импортируйте колоду Anki или откройте книгу.</string>
+    <string name="home_open_library">Открыть библиотеку</string>
+    <string name="home_quests">Задания</string>
+    <string name="home_reward_claimed">Награда дня +20 XP получена</string>
+
+    <string name="onboarding_welcome_title">Добро пожаловать в Kotoba</string>
+    <string name="onboarding_welcome_message">Учите слова из того, что любите, — книг, манги, статей — с умным интервальным повторением и личным AI-преподавателем.</string>
+    <string name="onboarding_languages_title">Что вы хотите изучать?</string>
+    <string name="onboarding_languages_hint">Можно выбрать несколько и переключаться в любой момент.</string>
+    <string name="onboarding_featured">Полная поддержка · стартовые колоды</string>
+    <string name="onboarding_starter">Стартовая колода</string>
+    <string name="onboarding_own_words">Свои слова</string>
+    <string name="onboarding_native_title">Ваш родной язык</string>
+    <string name="onboarding_goal_title">Цель на день</string>
+    <string name="onboarding_goal_casual">Легко · 5 мин</string>
+    <string name="onboarding_goal_regular">Обычно · 10 мин</string>
+    <string name="onboarding_goal_serious">Серьёзно · 20 мин</string>
+    <string name="onboarding_goal_intense">Интенсивно · 40 мин</string>
+    <string name="onboarding_name_title">Как к вам обращаться?</string>
+    <string name="onboarding_name_hint">Имя (необязательно)</string>
+    <string name="onboarding_ai_note">Совет: подключите свой API-ключ AI в Настройки → AI, чтобы открыть тьютора и генератор колод.</string>
+    <string name="onboarding_start">Начать обучение</string>
+    <string name="onboarding_installing">Готовим колоды…</string>
+</resources>
