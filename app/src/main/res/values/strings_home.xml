@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_subtitle">Ready for today\'s words?</string>
+    <string name="home_greeting_morning">Good morning</string>
+    <string name="home_greeting_day">Good afternoon</string>
+    <string name="home_greeting_evening">Good evening</string>
+    <string name="home_greeting_night">Good night</string>
+    <string name="home_level">Level %1$d</string>
+    <string name="home_next_level">To next level</string>
+    <string name="home_achievements">Achievements</string>
+    <string name="home_daily_goal">Daily goal</string>
+    <string name="home_goal_done">Daily goal reached! 🎉</string>
+    <string name="home_due_count">%1$d to review</string>
+    <string name="home_new_count">%1$d new words</string>
+    <string name="home_today_stats">Today: %1$d new · %2$d reviews</string>
+    <string name="home_start_session">Start lesson</string>
+    <string name="home_practice_more">Practice more</string>
+    <string name="home_quick_review">Quick Review</string>
+    <string name="home_quick_review_hint">A few minutes, the most important words</string>
+    <string name="home_minutes_short">%1$d min</string>
+    <string name="home_weak_title">Weak words</string>
+    <plurals name="home_weak_words">
+        <item quantity="one">%1$d word needs extra practice</item>
+        <item quantity="other">%1$d words need extra practice</item>
+    </plurals>
+    <string name="home_train">Train</string>
+    <string name="home_word_of_day">Word of the day</string>
+    <string name="home_continue_reading">Continue reading</string>
+    <string name="home_empty_title">Your library is empty</string>
+    <string name="home_empty_message">Add words, import an Anki deck, or open a book to start.</string>
+    <string name="home_open_library">Open library</string>
+    <string name="home_quests">Quests</string>
+    <string name="home_reward_claimed">Daily reward +20 XP claimed</string>
+
+    <string name="onboarding_welcome_title">Welcome to Kotoba</string>
+    <string name="onboarding_welcome_message">Learn words from what you love — books, manga, articles — with smart spaced repetition and a personal AI tutor.</string>
+    <string name="onboarding_languages_title">What do you want to learn?</string>
+    <string name="onboarding_languages_hint">You can choose several and switch any time.</string>
+    <string name="onboarding_featured">Full support · starter decks</string>
+    <string name="onboarding_starter">Starter deck</string>
+    <string name="onboarding_own_words">Your own words</string>
+    <string name="onboarding_native_title">Your native language</string>
+    <string name="onboarding_goal_title">Daily goal</string>
+    <string name="onboarding_goal_casual">Casual · 5 min</string>
+    <string name="onboarding_goal_regular">Regular · 10 min</string>
+    <string name="onboarding_goal_serious">Serious · 20 min</string>
+    <string name="onboarding_goal_intense">Intense · 40 min</string>
+    <string name="onboarding_name_title">What should we call you?</string>
+    <string name="onboarding_name_hint">Name (optional)</string>
+    <string name="onboarding_ai_note">Tip: connect your own AI API key later in Settings → AI to unlock the tutor and deck generator.</string>
+    <string name="onboarding_start">Start learning</string>
+    <string name="onboarding_installing">Preparing decks…</string>
+</resources>
