@@ -132,6 +132,13 @@ class GamificationRepository @Inject constructor(
         return result
     }
 
+    /** Unlocks the running seasonal event's badge once its XP target is reached. */
+    suspend fun checkEventBadge(): SeasonalEvent? {
+        val event = SeasonalEvents.active(java.time.LocalDate.ofEpochDay(time.today())) ?: return null
+        if (event.xpEarned(activity.all()) < event.targetXp) return null
+        return event.takeIf { achievements.insert(AchievementEntity(event.badgeKey, time.now())) != -1L }
+    }
+
     private fun weeklyQuests(week: List<DailyActivityEntity>): List<Quest> = listOf(
         Quest("weekly_reviews", week.sumOf { it.reviews }, 200, 50),
         Quest("weekly_new_words", week.sumOf { it.newWords }, 30, 50),

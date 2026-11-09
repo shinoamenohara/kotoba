@@ -12,6 +12,7 @@ import kotlinx.serialization.Serializable
 // Onboarding & profile
 @Serializable data object OnboardingRoute
 @Serializable data object AchievementsRoute
+@Serializable data object LeagueRoute
 
 /**
  * A study session.

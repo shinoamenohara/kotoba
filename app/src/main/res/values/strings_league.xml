@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="league_title">League &amp; friends</string>
+    <string name="league_tier_name">%1$s league</string>
+    <string name="league_days_left">%1$d days left this week</string>
+    <string name="league_summary">%1$d XP this week · %2$d days left</string>
+    <string name="league_top_tier">Top league! Keep your weekly XP up to stay here.</string>
+    <string name="league_promotion_secured">Promotion secured: you move up next week 🎉</string>
+    <string name="league_to_promotion">%1$d XP more to reach the %2$s league</string>
+    <string name="league_demotion_warning">Earn at least %1$d XP this week to stay in this league</string>
+    <string name="league_leaderboard">Friends leaderboard</string>
+    <string name="league_no_friends">Compete with friends: share your code and add theirs. Codes update the weekly leaderboard, no account needed.</string>
+    <string name="league_share_code">Share my code</string>
+    <string name="league_share_title">Share friend code</string>
+    <string name="league_share_message">Let\'s compete in Kotoba! Add my code in League &amp; friends:\n%1$s</string>
+    <string name="league_add_friend">Add friend</string>
+    <string name="league_add_friend_hint">Paste the code or the whole message your friend sent. Add a new code from them any time to refresh their score.</string>
+    <string name="league_friend_code">Friend code</string>
+    <string name="league_add">Add</string>
+    <string name="league_remove_friend">Remove friend</string>
+    <string name="league_friend_added">Friend added</string>
+    <string name="league_friend_updated">Friend\'s score updated</string>
+    <string name="league_friend_invalid">That doesn\'t look like a valid Kotoba friend code</string>
+    <string name="league_friend_self">That\'s your own code</string>
+    <string name="league_you">%1$s (you)</string>
+    <string name="league_stale">updated %1$s</string>
+    <string name="league_history">League history</string>
+    <string name="league_event_badges">Event badges</string>
+    <string name="league_rules_hint">Leagues reset every Monday. Reach the weekly XP target to move up a league; a week below the minimum moves you down. Hard words and seasonal events give bonus XP.</string>
+    <string name="league_event_until">Until %1$s</string>
+    <string name="league_event_starts">Starts %1$s</string>
+    <string name="league_event_upcoming">Coming soon: %1$s</string>
+    <string name="league_event_boost">×%1$s XP</string>
+    <string name="league_event_focus_boost">×%2$s for %1$s</string>
+    <string name="league_event_progress">Event goal: %1$d / %2$d XP for the badge</string>
+    <string name="league_event_badge_earned">Badge earned! 🏅</string>
+
+    <string name="tier_bronze">Bronze</string>
+    <string name="tier_silver">Silver</string>
+    <string name="tier_gold">Gold</string>
+    <string name="tier_sapphire">Sapphire</string>
+    <string name="tier_ruby">Ruby</string>
+    <string name="tier_emerald">Emerald</string>
+    <string name="tier_amethyst">Amethyst</string>
+    <string name="tier_pearl">Pearl</string>
+    <string name="tier_obsidian">Obsidian</string>
+    <string name="tier_diamond">Diamond</string>
+
+    <string name="event_generic">Seasonal event</string>
+    <string name="event_new_year">New Year Marathon</string>
+    <string name="event_new_year_desc">Finish the year strong and start the new one with a streak.</string>
+    <string name="event_spring_festival">Spring Festival 春节</string>
+    <string name="event_spring_festival_desc">Celebrate the Lunar New Year: double XP for Chinese words.</string>
+    <string name="event_hanami">Hanami 花見</string>
+    <string name="event_hanami_desc">Cherry blossom season: double XP for Japanese words.</string>
+    <string name="event_tanabata">Tanabata 七夕</string>
+    <string name="event_tanabata_desc">The star festival week: make a wish and study Japanese for double XP.</string>
+    <string name="event_summer_reading">Summer Reading Challenge</string>
+    <string name="event_summer_reading_desc">A month of books, manga and articles: boosted XP for every language.</string>
+    <string name="event_mid_autumn">Mid-Autumn 中秋节</string>
+    <string name="event_mid_autumn_desc">Mooncakes and lanterns: double XP for Chinese words.</string>
+    <string name="event_halloween">Halloween Week 🎃</string>
+    <string name="event_halloween_desc">Spooky vocabulary week: double XP for English words.</string>
+</resources>

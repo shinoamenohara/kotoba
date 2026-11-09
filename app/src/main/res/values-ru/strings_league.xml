@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="league_title">Лига и друзья</string>
+    <string name="league_tier_name">Лига «%1$s»</string>
+    <string name="league_days_left">До конца недели: %1$d дн.</string>
+    <string name="league_summary">%1$d XP за неделю · осталось %2$d дн.</string>
+    <string name="league_top_tier">Высшая лига! Держите недельный XP, чтобы остаться здесь.</string>
+    <string name="league_promotion_secured">Повышение обеспечено: со следующей недели вы в новой лиге 🎉</string>
+    <string name="league_to_promotion">Ещё %1$d XP до лиги «%2$s»</string>
+    <string name="league_demotion_warning">Наберите хотя бы %1$d XP за неделю, чтобы остаться в этой лиге</string>
+    <string name="league_leaderboard">Рейтинг друзей</string>
+    <string name="league_no_friends">Соревнуйтесь с друзьями: поделитесь своим кодом и добавьте их коды. Коды обновляют недельный рейтинг, аккаунт не нужен.</string>
+    <string name="league_share_code">Поделиться кодом</string>
+    <string name="league_share_title">Отправить код друга</string>
+    <string name="league_share_message">Давай соревноваться в Kotoba! Добавь мой код в разделе «Лига и друзья»:\n%1$s</string>
+    <string name="league_add_friend">Добавить друга</string>
+    <string name="league_add_friend_hint">Вставьте код или всё сообщение от друга. Новый код от того же друга обновит его результат.</string>
+    <string name="league_friend_code">Код друга</string>
+    <string name="league_add">Добавить</string>
+    <string name="league_remove_friend">Удалить друга</string>
+    <string name="league_friend_added">Друг добавлен</string>
+    <string name="league_friend_updated">Результат друга обновлён</string>
+    <string name="league_friend_invalid">Это не похоже на код друга Kotoba</string>
+    <string name="league_friend_self">Это ваш собственный код</string>
+    <string name="league_you">%1$s (вы)</string>
+    <string name="league_stale">обновлено %1$s</string>
+    <string name="league_history">История лиг</string>
+    <string name="league_event_badges">Значки событий</string>
+    <string name="league_rules_hint">Лиги обновляются каждый понедельник. Наберите недельную цель XP, чтобы подняться в лигу выше; неделя ниже минимума опускает на лигу ниже. Сложные слова и сезонные события дают бонусный XP.</string>
+    <string name="league_event_until">До %1$s</string>
+    <string name="league_event_starts">Начало %1$s</string>
+    <string name="league_event_upcoming">Скоро: %1$s</string>
+    <string name="league_event_boost">×%1$s XP</string>
+    <string name="league_event_focus_boost">×%2$s для языка %1$s</string>
+    <string name="league_event_progress">Цель события: %1$d / %2$d XP для значка</string>
+    <string name="league_event_badge_earned">Значок получен! 🏅</string>
+
+    <string name="tier_bronze">Бронза</string>
+    <string name="tier_silver">Серебро</string>
+    <string name="tier_gold">Золото</string>
+    <string name="tier_sapphire">Сапфир</string>
+    <string name="tier_ruby">Рубин</string>
+    <string name="tier_emerald">Изумруд</string>
+    <string name="tier_amethyst">Аметист</string>
+    <string name="tier_pearl">Жемчуг</string>
+    <string name="tier_obsidian">Обсидиан</string>
+    <string name="tier_diamond">Алмаз</string>
+
+    <string name="event_generic">Сезонное событие</string>
+    <string name="event_new_year">Новогодний марафон</string>
+    <string name="event_new_year_desc">Закончите год сильно и начните новый с серией занятий.</string>
+    <string name="event_spring_festival">Праздник весны 春节</string>
+    <string name="event_spring_festival_desc">Китайский Новый год: двойной XP за китайские слова.</string>
+    <string name="event_hanami">Ханами 花見</string>
+    <string name="event_hanami_desc">Сезон цветения сакуры: двойной XP за японские слова.</string>
+    <string name="event_tanabata">Танабата 七夕</string>
+    <string name="event_tanabata_desc">Неделя праздника звёзд: загадайте желание и учите японский с двойным XP.</string>
+    <string name="event_summer_reading">Летний марафон чтения</string>
+    <string name="event_summer_reading_desc">Месяц книг, манги и статей: повышенный XP для всех языков.</string>
+    <string name="event_mid_autumn">Праздник середины осени 中秋节</string>
+    <string name="event_mid_autumn_desc">Лунные пряники и фонарики: двойной XP за китайские слова.</string>
+    <string name="event_halloween">Неделя Хэллоуина 🎃</string>
+    <string name="event_halloween_desc">Жуткая неделя лексики: двойной XP за английские слова.</string>
+</resources>

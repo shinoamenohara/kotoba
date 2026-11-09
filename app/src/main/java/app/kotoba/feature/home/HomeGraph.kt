@@ -7,6 +7,7 @@ import app.kotoba.core.model.DocumentKind
 import app.kotoba.core.navigation.AchievementsRoute
 import app.kotoba.core.navigation.CardDetailRoute
 import app.kotoba.core.navigation.HomeRoute
+import app.kotoba.core.navigation.LeagueRoute
 import app.kotoba.core.navigation.LibraryRoute
 import app.kotoba.core.navigation.MangaReaderRoute
 import app.kotoba.core.navigation.OnboardingRoute
@@ -27,6 +28,7 @@ fun NavGraphBuilder.homeGraph(nav: NavController) {
                 openDocument = { d -> nav.navigate(if (d.kind == DocumentKind.MANGA) MangaReaderRoute(d.id) else ReaderRoute(d.id)) },
                 openSettings = { nav.navigate(SettingsRoute) },
                 openAchievements = { nav.navigate(AchievementsRoute) },
+                openLeague = { nav.navigate(LeagueRoute) },
                 openLibrary = {
                     nav.navigate(LibraryRoute) { launchSingleTop = true }
                 },
@@ -39,4 +41,5 @@ fun NavGraphBuilder.homeGraph(nav: NavController) {
         })
     }
     composable<AchievementsRoute> { AchievementsScreen(onBack = { nav.popBackStack() }) }
+    composable<LeagueRoute> { LeagueScreen(onBack = { nav.popBackStack() }) }
 }

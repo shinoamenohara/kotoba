@@ -77,6 +77,7 @@ data class HomeActions(
     val openDocument: (DocumentEntity) -> Unit,
     val openSettings: () -> Unit,
     val openAchievements: () -> Unit,
+    val openLeague: () -> Unit,
     val openLibrary: () -> Unit,
 )
 
@@ -109,6 +110,7 @@ fun HomeScreen(actions: HomeActions, vm: HomeViewModel = hiltViewModel()) {
             item { state.profile?.let { ProfileStrip(it, actions.openAchievements) } }
             item { DailyGoalCard(state, actions.startSession) }
             item { QuickReviewRow(s.quickReviewMinutes, actions.quickReview) }
+            item { LeagueSummaryCard(actions.openLeague) }
             if (state.counts.weak > 0) item { WeakWordsCard(state.counts.weak, actions.weakWords) }
             state.wordOfDay?.let { w -> item { WordOfDayCard(w, s.showReading, { vm.speak(w) }, { actions.openCard(w.id) }) } }
             state.lastDocument?.let { d -> item { ContinueReadingCard(d) { actions.openDocument(d) } } }

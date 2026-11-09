@@ -22,7 +22,7 @@ and Russian also work with the same pipeline. Interface: Russian and English.
 | AI Tutor | Bring your own key: OpenAI, Anthropic, Gemini, OpenRouter, DeepSeek, Mistral, Groq, or any OpenAI-compatible endpoint (Ollama, LM Studio). Explanations, grammar, mistake analysis based on your stats, dialogue practice, generated exercises. Keys are encrypted with Android Keystore; daily token/request limits. |
 | Deck Generator | Builds a deck from a book, article, NotebookLM export or pasted text: AI or offline extraction, filters, then you review and pick the words; nothing is added automatically. |
 | Import / export | Anki `.apkg`/`.colpkg` (fields, tags, decks, media, optional progress), CSV/TSV, JSON, custom dictionaries; export to CSV/TSV/JSON; full backups, automatic backup to a folder (e.g. Google Drive) for syncing across devices. |
-| Gamification | XP and levels, streak, daily goal and reward, weekly quests, daily challenge, combos, achievements. |
+| Gamification | XP and levels, streak, daily goal and reward, weekly quests, daily challenge, combos, hard-word bonus, achievements. Weekly leagues (Bronze → Diamond), a friends leaderboard via shareable friend codes (no account), and seasonal events with boosted XP and badges: Spring Festival and Mid-Autumn (×2 for Chinese), Hanami and Tanabata (×2 for Japanese), Halloween (×2 for English), New Year and Summer Reading. |
 | Stats | Day/week/month reports, vocabulary growth, activity, accuracy, categories, CEFR/JLPT/HSK distribution, error analytics, Vocabulary Map. |
 | System | Offline-first (Room), reminders, Word-of-the-day widget, light/dark/dynamic theme, haptics, share text into the app. |
 
