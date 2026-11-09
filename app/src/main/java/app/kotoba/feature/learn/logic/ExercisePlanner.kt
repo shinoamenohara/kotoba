@@ -120,8 +120,8 @@ object ExercisePlanner {
         requested == FILL_BLANK && traits.canOptions -> MULTIPLE_CHOICE
         requested == SENTENCE_BUILDER && traits.termLength in 2..20 -> WORD_SCRAMBLE
         requested == TRANSLATION || requested == SENTENCE_BUILDER -> TYPING
+        isFlashcard(requested) -> FLASHCARD_TERM_TO_TRANSLATION
         traits.canOptions -> MULTIPLE_CHOICE
-        requested == FLASHCARD_TERM_TO_CONTEXT -> FLASHCARD_TERM_TO_TRANSLATION
         else -> TYPING
     }
 

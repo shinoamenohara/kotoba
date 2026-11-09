@@ -20,10 +20,10 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Backspace
+import androidx.compose.material.icons.automirrored.rounded.Backspace
 import androidx.compose.material.icons.rounded.Keyboard
 import androidx.compose.material.icons.rounded.SlowMotionVideo
-import androidx.compose.material.icons.rounded.VolumeUp
+import androidx.compose.material.icons.automirrored.rounded.VolumeUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilledTonalIconButton
@@ -188,7 +188,7 @@ fun ContextQuizExercise(step: PreparedStep, answered: Boolean, onSubmit: (Attemp
                     Spacer(Modifier.height(8.dp))
                     Text(step.card.term, style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
                 }
-                FilledTonalIconButton(onClick = { onSpeak(sentence.text) }) { Icon(Icons.Rounded.VolumeUp, stringResource(R.string.action_listen)) }
+                FilledTonalIconButton(onClick = { onSpeak(sentence.text) }) { Icon(Icons.AutoMirrored.Rounded.VolumeUp, stringResource(R.string.action_listen)) }
                 if (answered && sentence.translation.isNotBlank()) {
                     Text(sentence.translation, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center)
                 }
@@ -209,7 +209,7 @@ fun ListeningExercise(step: PreparedStep, answered: Boolean, onSubmit: (Attempt)
         PromptCard {
             Row(horizontalArrangement = Arrangement.spacedBy(16.dp), verticalAlignment = Alignment.CenterVertically) {
                 FilledTonalIconButton(onClick = { onSpeak(step.card.term, false) }, modifier = Modifier.size(84.dp)) {
-                    Icon(Icons.Rounded.VolumeUp, stringResource(R.string.action_listen), Modifier.size(40.dp))
+                    Icon(Icons.AutoMirrored.Rounded.VolumeUp, stringResource(R.string.action_listen), Modifier.size(40.dp))
                 }
                 FilledTonalIconButton(onClick = { onSpeak(step.card.term, true) }, modifier = Modifier.size(56.dp)) {
                     Icon(Icons.Rounded.SlowMotionVideo, stringResource(R.string.learn_slow))
@@ -321,7 +321,7 @@ fun SpellingExercise(step: PreparedStep, answered: Boolean, onSubmit: (Attempt) 
         PromptCard {
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 FilledTonalIconButton(onClick = { onSpeak(term, false) }, modifier = Modifier.size(64.dp)) {
-                    Icon(Icons.Rounded.VolumeUp, stringResource(R.string.action_listen), Modifier.size(32.dp))
+                    Icon(Icons.AutoMirrored.Rounded.VolumeUp, stringResource(R.string.action_listen), Modifier.size(32.dp))
                 }
                 FilledTonalIconButton(onClick = { onSpeak(term, true) }, modifier = Modifier.size(64.dp)) {
                     Icon(Icons.Rounded.SlowMotionVideo, stringResource(R.string.learn_slow))
@@ -416,7 +416,7 @@ private fun TileArranger(
     if (!answered) {
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             OutlinedButton(onClick = { if (chosen.isNotEmpty()) chosen = chosen.dropLast(1) }, modifier = Modifier.weight(1f).height(52.dp)) {
-                Icon(Icons.Rounded.Backspace, null)
+                Icon(Icons.AutoMirrored.Rounded.Backspace, null)
             }
             Button(
                 onClick = { onComplete(chosen.map { pieces[it] }) },
@@ -481,7 +481,7 @@ fun SentenceBuilderExercise(step: PreparedStep, answered: Boolean, onSubmit: (At
             if (answered) {
                 Spacer(Modifier.height(8.dp))
                 Text(sentence.text, style = MaterialTheme.typography.bodyLarge, textAlign = TextAlign.Center)
-                FilledTonalIconButton(onClick = { onSpeak(sentence.text) }) { Icon(Icons.Rounded.VolumeUp, stringResource(R.string.action_listen)) }
+                FilledTonalIconButton(onClick = { onSpeak(sentence.text) }) { Icon(Icons.AutoMirrored.Rounded.VolumeUp, stringResource(R.string.action_listen)) }
             }
         }
         TileArranger(step.index, step.shuffledTokens, answered) { pieces ->
@@ -518,7 +518,7 @@ fun TranslationExercise(
                 style = MaterialTheme.typography.headlineSmall,
                 textAlign = TextAlign.Center,
             )
-            FilledTonalIconButton(onClick = { onSpeak(sentence.text) }) { Icon(Icons.Rounded.VolumeUp, stringResource(R.string.action_listen)) }
+            FilledTonalIconButton(onClick = { onSpeak(sentence.text) }) { Icon(Icons.AutoMirrored.Rounded.VolumeUp, stringResource(R.string.action_listen)) }
             Text("${step.card.term} — ${step.card.translation}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         OutlinedTextField(

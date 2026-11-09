@@ -27,7 +27,7 @@ import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.FavoriteBorder
 import androidx.compose.material.icons.rounded.Info
-import androidx.compose.material.icons.rounded.VolumeUp
+import androidx.compose.material.icons.automirrored.rounded.VolumeUp
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -171,7 +171,7 @@ private fun CardFront(step: PreparedStep, onSpeak: (String) -> Unit) {
             }
             ExerciseType.FLASHCARD_AUDIO_TO_TERM -> {
                 FilledTonalIconButton(onClick = { onSpeak(card.term) }, modifier = Modifier.size(96.dp)) {
-                    Icon(Icons.Rounded.VolumeUp, contentDescription = stringResource(R.string.action_listen), modifier = Modifier.size(48.dp))
+                    Icon(Icons.AutoMirrored.Rounded.VolumeUp, contentDescription = stringResource(R.string.action_listen), modifier = Modifier.size(48.dp))
                 }
                 Spacer(Modifier.height(12.dp))
                 Text(stringResource(R.string.learn_tap_to_replay), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -213,7 +213,7 @@ private fun CardBack(
         Row(verticalAlignment = Alignment.CenterVertically) {
             MasteryBadge(card.mastery)
             Spacer(Modifier.weight(1f))
-            IconButton(onClick = { onSpeak(card.term) }) { Icon(Icons.Rounded.VolumeUp, stringResource(R.string.action_listen)) }
+            IconButton(onClick = { onSpeak(card.term) }) { Icon(Icons.AutoMirrored.Rounded.VolumeUp, stringResource(R.string.action_listen)) }
             IconButton(onClick = onFavorite) {
                 Icon(
                     if (card.favorite) Icons.Rounded.Favorite else Icons.Rounded.FavoriteBorder,
@@ -262,7 +262,7 @@ private fun CardBack(
                         Text(text, style = MaterialTheme.typography.bodyLarge)
                         if (tr.isNotBlank()) Text(tr, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
-                    IconButton(onClick = { onSpeak(text) }) { Icon(Icons.Rounded.VolumeUp, stringResource(R.string.action_listen), Modifier.size(20.dp)) }
+                    IconButton(onClick = { onSpeak(text) }) { Icon(Icons.AutoMirrored.Rounded.VolumeUp, stringResource(R.string.action_listen), Modifier.size(20.dp)) }
                 }
             }
         }
