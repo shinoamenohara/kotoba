@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Statistics -->
+    <string name="stats_title">Статистика</string>
+    <string name="stats_share">Поделиться</string>
+    <string name="stats_vocab_map">Карта словаря</string>
+    <string name="stats_open_vocab_map">Открыть карту словаря</string>
+    <string name="stats_period_day">День</string>
+    <string name="stats_period_week">Неделя</string>
+    <string name="stats_period_month">Месяц</string>
+    <string name="stats_report_day">Отчёт за сегодня</string>
+    <string name="stats_report_week">Отчёт за неделю</string>
+    <string name="stats_report_month">Отчёт за месяц</string>
+    <string name="stats_new_words">Новые слова</string>
+    <string name="stats_reviews">Повторения</string>
+    <string name="stats_accuracy">Точность</string>
+    <string name="stats_study_time">Время занятий</string>
+    <string name="stats_avg_response">Ср. ответ</string>
+    <string name="stats_xp_earned">Получено XP</string>
+    <string name="stats_forgotten">Забыто</string>
+    <string name="stats_recovered">Восстановлено</string>
+    <string name="stats_goal_days">Дни с целью</string>
+    <string name="stats_goal_reached">Цель выполнена</string>
+    <string name="stats_total_words">Слов в библиотеке</string>
+    <string name="stats_mastered">Освоено</string>
+    <string name="stats_streak">Серия дней</string>
+    <string name="stats_level_value">Уровень %1$d</string>
+    <string name="stats_total_xp">Всего %1$d XP</string>
+    <string name="stats_word_mastery">Освоение слов</string>
+    <string name="stats_new_today">сегодня</string>
+    <string name="stats_new_week">за неделю</string>
+    <string name="stats_new_month">за месяц</string>
+    <string name="stats_series_studied">Изучено</string>
+    <string name="stats_series_mastered">Освоено</string>
+    <string name="stats_chart_growth">Рост словарного запаса</string>
+    <string name="stats_chart_growth_sub">Изученные и освоенные слова со временем</string>
+    <string name="stats_chart_activity">Ежедневная активность</string>
+    <string name="stats_chart_accuracy">Правильные ответы</string>
+    <string name="stats_period_accuracy">В среднем за период: %1$s</string>
+    <string name="stats_no_answers">За этот период ответов пока нет</string>
+    <string name="stats_chart_categories">Прогресс по категориям</string>
+    <string name="stats_chart_categories_sub">Длина полосы — число слов, цвета — этапы освоения</string>
+    <string name="stats_chart_levels">Слова по уровням (%1$s)</string>
+    <string name="stats_no_levels">У слов пока нет уровня</string>
+    <string name="stats_level_none">Без уровня</string>
+    <string name="stats_chart_hard">Сложные слова</string>
+    <string name="stats_chart_hard_sub">Забытые слова и восстановленные после переучивания</string>
+    <plurals name="stats_weak_now">
+        <item quantity="one">Сейчас %1$d слабое слово</item>
+        <item quantity="few">Сейчас %1$d слабых слова</item>
+        <item quantity="many">Сейчас %1$d слабых слов</item>
+        <item quantity="other">Сейчас %1$d слабого слова</item>
+    </plurals>
+    <string name="stats_practice_weak">Тренировать</string>
+    <string name="stats_errors">Анализ ошибок</string>
+    <string name="stats_most_missed">Чаще всего ошибки</string>
+    <string name="stats_no_mistakes">За этот период ошибок нет 🎉</string>
+    <string name="stats_missed_of">%1$d из %2$d</string>
+    <string name="stats_confused_pairs">Часто путаются</string>
+    <string name="stats_no_confusions">Путающихся пар пока нет</string>
+    <string name="stats_by_exercise">Точность по упражнениям</string>
+    <string name="stats_slowest">Самые долгие ответы</string>
+    <string name="stats_history">История занятий</string>
+    <string name="stats_history_empty">Здесь появятся ваши занятия</string>
+    <string name="stats_history_line">Ответов: %1$d · слов: %2$d · %3$s</string>
+    <string name="stats_history_more">…и ещё %1$d</string>
+    <string name="stats_today">Сегодня</string>
+    <string name="stats_yesterday">Вчера</string>
+    <string name="stats_duration_hm">%1$d ч %2$02d мин</string>
+    <string name="stats_duration_m">%1$d мин</string>
+    <string name="stats_duration_s">%1$d с</string>
+    <string name="stats_share_header">📊 Kotoba · %1$s · %2$s</string>
+    <string name="stats_share_vocab">Словарь: %1$d слов, освоено %2$d</string>
+
+    <string name="stats_ex_term_to_translation">Слово → перевод</string>
+    <string name="stats_ex_translation_to_term">Перевод → слово</string>
+    <string name="stats_ex_term_to_context">Слово → контекст</string>
+    <string name="stats_ex_audio_to_term">Аудио → слово</string>
+    <string name="stats_ex_multiple_choice">Выбор ответа</string>
+    <string name="stats_ex_reverse_choice">Обратный выбор</string>
+    <string name="stats_ex_typing">Ввод перевода</string>
+    <string name="stats_ex_listening">Аудирование</string>
+    <string name="stats_ex_spelling">Правописание</string>
+    <string name="stats_ex_scramble">Собери слово</string>
+    <string name="stats_ex_fill_blank">Заполни пропуск</string>
+    <string name="stats_ex_sentence_builder">Составь предложение</string>
+    <string name="stats_ex_matching">Сопоставление</string>
+    <string name="stats_ex_context_quiz">Значение по контексту</string>
+    <string name="stats_ex_translation">Перевод предложений</string>
+    <string name="stats_ex_pronunciation">Произношение</string>
+    <string name="stats_ex_quick_review">Быстрое повторение</string>
+
+    <string name="stats_pos_noun">Существительные</string>
+    <string name="stats_pos_verb">Глаголы</string>
+    <string name="stats_pos_adjective">Прилагательные</string>
+    <string name="stats_pos_adverb">Наречия</string>
+    <string name="stats_pos_pronoun">Местоимения</string>
+    <string name="stats_pos_preposition">Предлоги</string>
+    <string name="stats_pos_conjunction">Союзы</string>
+    <string name="stats_pos_interjection">Междометия</string>
+    <string name="stats_pos_particle">Частицы</string>
+    <string name="stats_pos_counter">Счётные слова</string>
+    <string name="stats_pos_phrase">Фразы</string>
+    <string name="stats_pos_idiom">Идиомы</string>
+    <string name="stats_pos_other">Другое / не указано</string>
+
+    <!-- Vocabulary map -->
+    <string name="stats_map_size">Словарный запас</string>
+    <string name="stats_map_categories">Категории</string>
+    <string name="stats_map_weak_hint">Выделенные категории (%1$d) отстают — уделите им внимание</string>
+    <string name="stats_map_empty_category">Пока нет слов</string>
+    <string name="stats_map_category_counts">Освоено %1$d / %2$d</string>
+    <string name="stats_map_needs_attention">Требует внимания</string>
+    <string name="stats_map_levels_sub">Освоено / всего слов на каждом уровне</string>
+    <string name="stats_map_pos">Части речи</string>
+    <string name="stats_map_history">История словаря</string>
+
+    <!-- Notifications -->
+    <string name="notify_channel_name">Напоминания о занятиях</string>
+    <string name="notify_channel_desc">Ежедневное напоминание повторить слова</string>
+    <string name="notify_title">Пора позаниматься 📚</string>
+    <plurals name="notify_due">
+        <item quantity="one">%1$d слово к повторению</item>
+        <item quantity="few">%1$d слова к повторению</item>
+        <item quantity="many">%1$d слов к повторению</item>
+        <item quantity="other">%1$d слова к повторению</item>
+    </plurals>
+    <string name="notify_goal">Цель дня %1$d/%2$d XP</string>
+    <string name="notify_streak">серия %1$d🔥</string>
+    <string name="notify_start_streak">начните серию сегодня 🔥</string>
+
+    <!-- Widget -->
+    <string name="widget_name">Слово дня</string>
+    <string name="widget_description">Каждый день новое слово с чтением, переводом, числом повторений и вашей серией</string>
+    <string name="widget_empty">Добавьте слова, чтобы видеть слово дня</string>
+    <string name="widget_due">%1$d к повтору</string>
+    <string name="widget_streak">%1$d🔥</string>
+    <string name="widget_loading">Загрузка…</string>
+</resources>
