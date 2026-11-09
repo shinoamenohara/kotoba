@@ -1,5 +1,6 @@
 package app.kotoba.core.ai
 
+import app.kotoba.core.runCatchingCancellable
 import app.kotoba.core.data.AiSettings
 import app.kotoba.core.data.SettingsRepository
 import app.kotoba.core.data.TimeProvider
@@ -54,7 +55,7 @@ class AiRepository @Inject constructor(
         temperature: Double? = null,
         maxTokens: Int? = null,
     ): Result<AiCompletion> = withContext(Dispatchers.IO) {
-        runCatching {
+        runCatchingCancellable {
             val s = settings.current()
             val ai = s.ai
             val p = registry.byId(ai.providerId)
@@ -67,7 +68,7 @@ class AiRepository @Inject constructor(
                 if (usage.tokens >= ai.dailyTokenLimit) throw AiException(AiErrorKind.LOCAL_LIMIT, "Daily token limit reached (${ai.dailyTokenLimit})")
             }
             val completion = p.complete(
-                AiEndpoint(ai.baseUrl.ifBlank { p.defaultBaseUrl }, key),
+                AiEndpoint(validateBaseUrl(ai.baseUrl.ifBlank { p.defaultBaseUrl }), key),
                 AiRequest(
                     messages = messages,
                     system = system,
@@ -104,10 +105,10 @@ class AiRepository @Inject constructor(
     /** Verifies credentials by listing models and sending a tiny prompt. Doesn't count against limits. */
     suspend fun testConnection(providerId: String, apiKey: String, baseUrl: String, model: String): Result<ConnectionTest> =
         withContext(Dispatchers.IO) {
-            runCatching {
+            runCatchingCancellable {
                 val p = registry.byId(providerId)
-                val endpoint = AiEndpoint(baseUrl.ifBlank { p.defaultBaseUrl }, apiKey.ifBlank { keys.get(p.id).orEmpty() })
-                val models = runCatching { p.listModels(endpoint) }.getOrDefault(emptyList())
+                val endpoint = AiEndpoint(validateBaseUrl(baseUrl.ifBlank { p.defaultBaseUrl }), apiKey.ifBlank { keys.get(p.id).orEmpty() })
+                val models = runCatchingCancellable { p.listModels(endpoint) }.getOrDefault(emptyList())
                 val reply = p.complete(
                     endpoint,
                     AiRequest(listOf(AiMessage(AiRole.USER, "Reply with the single word: OK")), null, model.ifBlank { p.suggestedModels.first() }, 0.0, 16),

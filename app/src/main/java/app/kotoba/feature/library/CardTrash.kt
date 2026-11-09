@@ -15,10 +15,10 @@ data class DeletedCards(val cards: List<CardEntity>, val contexts: List<ContextE
 class CardTrash @Inject constructor(private val db: KotobaDatabase) {
     suspend fun delete(ids: Collection<Long>): DeletedCards = db.withTransaction {
         val list = ids.toList()
-        val cards = db.cardDao().getMany(list)
+        val cards = list.chunked(SQL_CHUNK).flatMap { db.cardDao().getMany(it) }
         val contexts = list.flatMap { db.contextDao().forCard(it) }
         val logs = list.flatMap { db.reviewLogDao().recentForCard(it, Int.MAX_VALUE) }
-        db.cardDao().deleteByIds(list)
+        list.chunked(SQL_CHUNK).forEach { db.cardDao().deleteByIds(it) }
         DeletedCards(cards, contexts, logs)
     }
 
@@ -33,6 +33,13 @@ class CardTrash @Inject constructor(private val db: KotobaDatabase) {
 
     suspend fun moveToDeck(ids: Collection<Long>, deckId: Long?) {
         val now = System.currentTimeMillis()
-        db.cardDao().updateAll(db.cardDao().getMany(ids.toList()).map { it.copy(deckId = deckId, updatedAt = now) })
+        db.cardDao().updateAll(
+            ids.toList().chunked(SQL_CHUNK).flatMap { db.cardDao().getMany(it) }.map { it.copy(deckId = deckId, updatedAt = now) },
+        )
+    }
+
+    private companion object {
+        // Stays under SQLite's bound-variable limit for "IN (:ids)" queries.
+        const val SQL_CHUNK = 500
     }
 }

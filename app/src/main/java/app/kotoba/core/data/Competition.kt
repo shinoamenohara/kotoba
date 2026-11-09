@@ -114,21 +114,21 @@ object FriendCode {
     private val json = Json { ignoreUnknownKeys = true; encodeDefaults = false }
 
     fun encode(s: FriendSnapshot): String {
-        val body = Base64.getUrlEncoder().withoutPadding().encodeToString(json.encodeToString(FriendSnapshot.serializer(), s).toByteArray())
+        val body = Base64.getUrlEncoder().withoutPadding().encodeToString(json.encodeToString(FriendSnapshot.serializer(), s).toByteArray(Charsets.UTF_8))
         return PREFIX + body + "-" + crc(body)
     }
 
     /** Finds a code anywhere in [text] (shared messages usually carry extra words). */
     fun decode(text: String): FriendSnapshot? {
-        val m = Regex("""KTB1-([A-Za-z0-9_-]+?)-([0-9a-f]{8})""").find(text) ?: return null
+        val m = Regex("""KTB1-([A-Za-z0-9_-]+)-([0-9a-f]{8})""").find(text) ?: return null
         val (body, sum) = m.destructured
         if (crc(body) != sum) return null
         return runCatching {
-            json.decodeFromString(FriendSnapshot.serializer(), String(Base64.getUrlDecoder().decode(body)))
+            json.decodeFromString(FriendSnapshot.serializer(), String(Base64.getUrlDecoder().decode(body), Charsets.UTF_8))
         }.getOrNull()?.takeIf { it.id.isNotBlank() }?.let { it.copy(name = it.name.take(40)) }
     }
 
-    private fun crc(body: String) = CRC32().apply { update(body.toByteArray()) }.value.toString(16).padStart(8, '0')
+    private fun crc(body: String) = CRC32().apply { update(body.toByteArray(Charsets.UTF_8)) }.value.toString(16).padStart(8, '0')
 }
 
 data class LeaderboardEntry(

@@ -333,12 +333,14 @@ private fun CommittedTextField(
     onCommit: (String) -> Unit,
 ) {
     var text by remember(key) { mutableStateOf(value) }
+    val insecure = !BaseUrlPolicy.isAllowed(text)
     OutlinedTextField(
         value = text,
         onValueChange = { text = it; onCommit(it) },
         label = { Text(label) },
         placeholder = { Text(placeholder) },
-        supportingText = { Text(supporting) },
+        isError = insecure,
+        supportingText = { Text(if (insecure) stringResource(R.string.ai_base_url_insecure) else supporting) },
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, autoCorrectEnabled = false),
         modifier = Modifier.fillMaxWidth(),

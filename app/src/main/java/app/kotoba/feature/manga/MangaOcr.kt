@@ -3,6 +3,8 @@ package app.kotoba.feature.manga
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.BitmapRegionDecoder
+import android.graphics.Rect
 import app.kotoba.core.model.StudyLanguage
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.Text
@@ -54,6 +56,14 @@ data class OcrPage(val width: Int, val height: Int, val language: String, val bl
 object OcrLayout {
     fun isVertical(box: OcrBox, text: String): Boolean = text.length >= 2 && box.height > box.width * 1.5
 
+    /** Power-of-two decode sample size keeping the longest side at or below [maxSide]. */
+    fun sampleSize(width: Int, height: Int, maxSide: Int): Int {
+        var s = 1
+        var longest = maxOf(width, height)
+        while (longest > maxSide) { s *= 2; longest /= 2 }
+        return s
+    }
+
     fun orderLines(lines: List<OcrLine>, vertical: Boolean): List<OcrLine> =
         if (vertical) lines.sortedWith(compareByDescending<OcrLine> { it.box.r }.thenBy { it.box.t })
         else lines.sortedWith(compareBy<OcrLine> { it.box.t }.thenBy { it.box.l })
@@ -93,14 +103,20 @@ object OcrLayout {
             }
         }
 
-        val ordered = groups.sortedWith { a, b ->
-            // Rows of bubbles top→bottom; within a row right→left for vertical CJK, else left→right.
-            val sameRow = minOf(a.box.b, b.box.b) - maxOf(a.box.t, b.box.t) > minOf(a.box.height, b.box.height) / 2
-            when {
-                sameRow && (a.vertical || b.vertical) -> b.box.r.compareTo(a.box.r)
-                sameRow -> a.box.l.compareTo(b.box.l)
-                else -> a.box.t.compareTo(b.box.t)
+        // Rows of bubbles top→bottom; within a row right→left for vertical CJK, else left→right.
+        // Built greedily: a pairwise "same row" comparator is not transitive and makes TimSort throw.
+        val ordered = ArrayList<Group>(groups.size)
+        val pending = groups.sortedBy { it.box.t }.toMutableList()
+        while (pending.isNotEmpty()) {
+            val first = pending.removeAt(0)
+            val row = mutableListOf(first)
+            val iter = pending.iterator()
+            while (iter.hasNext()) {
+                val g = iter.next()
+                val overlap = minOf(first.box.b, g.box.b) - maxOf(first.box.t, g.box.t)
+                if (overlap > minOf(first.box.height, g.box.height) / 2) { row += g; iter.remove() }
             }
+            ordered += if (row.any { it.vertical }) row.sortedByDescending { it.box.r } else row.sortedBy { it.box.l }
         }
         return ordered.mapIndexed { i, g ->
             val lines = orderLines(g.lines, g.vertical)
@@ -116,6 +132,10 @@ class MangaOcr @Inject constructor(
     private val json: Json,
 ) {
     private val recognizers = HashMap<String, TextRecognizer>()
+
+    private companion object {
+        const val MAX_OCR_SIDE = 3000
+    }
 
     private fun recognizer(lang: StudyLanguage): TextRecognizer = synchronized(recognizers) {
         val key = when (lang) {
@@ -148,18 +168,30 @@ class MangaOcr @Inject constructor(
     }
 
     suspend fun recognize(page: File, lang: StudyLanguage): OcrPage {
-        val bitmap = withContext(Dispatchers.IO) { BitmapFactory.decodeFile(page.absolutePath) }
-            ?: error("Cannot decode ${page.name}")
+        // Decoded downsampled to avoid OOM on huge scans; boxes are scaled back to full-size coordinates.
+        val (bitmap, fullW, fullH) = withContext(Dispatchers.IO) {
+            val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+            BitmapFactory.decodeFile(page.absolutePath, bounds)
+            val sample = OcrLayout.sampleSize(bounds.outWidth, bounds.outHeight, MAX_OCR_SIDE)
+            val bmp = BitmapFactory.decodeFile(page.absolutePath, BitmapFactory.Options().apply { inSampleSize = sample })
+            Triple(bmp, bounds.outWidth, bounds.outHeight)
+        }
+        if (bitmap == null) error("Cannot decode ${page.name}")
         try {
             val result: Text = recognizer(lang).process(InputImage.fromBitmap(bitmap, 0)).await()
             val cjk = lang == StudyLanguage.JA || lang == StudyLanguage.ZH
+            val sx = fullW.toFloat() / bitmap.width
+            val sy = fullH.toFloat() / bitmap.height
             val raw = result.textBlocks.map { block ->
                 block.lines.mapNotNull { line ->
                     val r = line.boundingBox ?: return@mapNotNull null
-                    OcrLine(line.text, OcrBox(r.left, r.top, r.right, r.bottom))
+                    OcrLine(
+                        line.text,
+                        OcrBox((r.left * sx).toInt(), (r.top * sy).toInt(), (r.right * sx).toInt(), (r.bottom * sy).toInt()),
+                    )
                 }
             }
-            val ocr = OcrPage(bitmap.width, bitmap.height, lang.code, OcrLayout.build(raw, cjk))
+            val ocr = OcrPage(fullW, fullH, lang.code, OcrLayout.build(raw, cjk))
             save(page, ocr)
             return ocr
         } finally {
@@ -169,20 +201,25 @@ class MangaOcr @Inject constructor(
 
     /** Saves a padded crop of [box] as PNG (speech-bubble image for cards). */
     suspend fun crop(page: File, box: OcrBox, target: File): File = withContext(Dispatchers.IO) {
-        val src = BitmapFactory.decodeFile(page.absolutePath) ?: error("Cannot decode ${page.name}")
+        // Region decoding keeps memory proportional to the crop, not the whole page.
+        @Suppress("DEPRECATION")
+        val decoder = BitmapRegionDecoder.newInstance(page.absolutePath, false) ?: error("Cannot decode ${page.name}")
         try {
             val pad = (minOf(box.width, box.height) * 0.15f).toInt().coerceIn(6, 40)
-            val l = (box.l - pad).coerceAtLeast(0)
-            val t = (box.t - pad).coerceAtLeast(0)
-            val r = (box.r + pad).coerceAtMost(src.width)
-            val b = (box.b + pad).coerceAtMost(src.height)
-            val out = Bitmap.createBitmap(src, l, t, (r - l).coerceAtLeast(1), (b - t).coerceAtLeast(1))
-            target.parentFile?.mkdirs()
-            target.outputStream().use { out.compress(Bitmap.CompressFormat.PNG, 100, it) }
-            if (out !== src) out.recycle()
+            val l = (box.l - pad).coerceIn(0, decoder.width - 1)
+            val t = (box.t - pad).coerceIn(0, decoder.height - 1)
+            val r = (box.r + pad).coerceIn(l + 1, decoder.width)
+            val b = (box.b + pad).coerceIn(t + 1, decoder.height)
+            val out = decoder.decodeRegion(Rect(l, t, r, b), null) ?: error("Cannot decode ${page.name}")
+            try {
+                target.parentFile?.mkdirs()
+                target.outputStream().use { out.compress(Bitmap.CompressFormat.PNG, 100, it) }
+            } finally {
+                out.recycle()
+            }
             target
         } finally {
-            src.recycle()
+            decoder.recycle()
         }
     }
 }

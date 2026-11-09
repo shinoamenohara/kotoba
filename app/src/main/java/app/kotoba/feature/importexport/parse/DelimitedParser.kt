@@ -10,6 +10,8 @@ data class DelimitedTable(
 
 /** CSV/TSV parser: delimiter auto-detection, RFC 4180 quotes, header detection. */
 object DelimitedParser {
+    private val ANKI_HEADER = Regex("""^#[A-Za-z ]+:""")
+
     private val candidates = charArrayOf('\t', ',', ';', '|')
 
     private val headerWords = setOf(
@@ -20,7 +22,8 @@ object DelimitedParser {
 
     fun parse(text: String, delimiter: Char? = null, header: Boolean? = null): DelimitedTable {
         val clean = text.removePrefix("\uFEFF")
-        val lines = clean.lineSequence().filter { !it.startsWith("#") }.joinToString("\n")
+        // Only Anki's leading "#key:value" header block is a comment; later "#" lines are data (hashtags, multi-line cells).
+        val lines = clean.lineSequence().dropWhile { ANKI_HEADER.containsMatchIn(it) }.joinToString("\n")
         val d = delimiter ?: detectDelimiter(lines)
         val all = splitRecords(lines, d).filter { row -> row.any { it.isNotBlank() } }
         if (all.isEmpty()) return DelimitedTable(d, emptyList(), emptyList(), false)

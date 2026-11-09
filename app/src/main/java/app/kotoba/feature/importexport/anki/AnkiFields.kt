@@ -12,7 +12,7 @@ import org.jsoup.select.NodeVisitor
 /** Converts Anki field HTML into plain text and pulls out media references. */
 object AnkiFields {
     private val soundRegex = Regex("""\[sound:([^\]]+)]""")
-    private val clozeRegex = Regex("""\{\{c\d+::(.*?)(?:::[^}]*)?}}""")
+    private val clozeRegex = Regex("""\{\{c\d+::(.*?)(?:::[^}]*)?}}""", RegexOption.DOT_MATCHES_ALL)
     private val blockTags = setOf("p", "div", "li", "tr", "h1", "h2", "h3", "h4", "h5", "h6", "ul", "ol", "table", "blockquote")
 
     fun sounds(field: String): List<String> = soundRegex.findAll(field).map { it.groupValues[1].trim() }.toList()
@@ -29,6 +29,7 @@ object AnkiFields {
         val noCloze = clozeRegex.replace(noSound) { it.groupValues[1] }
         if (!noCloze.contains('<') && !noCloze.contains('&')) return tidy(noCloze)
         val body = Jsoup.parseBodyFragment(noCloze).body()
+        body.select("rt, rp").remove() // furigana would otherwise be glued to the base text
         val sb = StringBuilder()
         NodeTraversor.traverse(object : NodeVisitor {
             override fun head(node: Node, depth: Int) {

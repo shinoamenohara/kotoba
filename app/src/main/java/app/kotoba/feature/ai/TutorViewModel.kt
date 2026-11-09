@@ -273,6 +273,7 @@ class TutorViewModel @Inject constructor(
             val level = targets.groupingBy { it.level }.eachCount().filterKeys { it.isNotBlank() }.maxByOrNull { it.value }?.key
             ai.completeJson(QuizBuilder.prompt(lang, s.nativeLanguage, targets.map { it.term }, level), QuizDto.serializer(), temperature = 0.5)
                 .onSuccess { dto ->
+                    if (_quiz.value != QuizState.Loading) return@onSuccess // closed while loading
                     val questions = QuizBuilder.sanitize(dto)
                     if (questions.isEmpty()) {
                         _quiz.value = QuizState.Error(AiFailure(app.kotoba.core.ai.AiErrorKind.BAD_RESPONSE))
@@ -289,7 +290,7 @@ class TutorViewModel @Inject constructor(
                     _quiz.value = QuizState.Running(questions, linked = quizCards.keys)
                     gamification.unlock(Achievement.AI_TUTOR)
                 }
-                .onFailure { _quiz.value = QuizState.Error(AiFailure.of(it)) }
+                .onFailure { if (_quiz.value == QuizState.Loading) _quiz.value = QuizState.Error(AiFailure.of(it)) }
         }
     }
 

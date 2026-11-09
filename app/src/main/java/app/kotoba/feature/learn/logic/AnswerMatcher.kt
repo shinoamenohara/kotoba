@@ -12,6 +12,8 @@ enum class MatchResult { EXACT, CLOSE, WRONG }
  */
 object AnswerMatcher {
     private val combiningMarks = Regex("\\p{Mn}+")
+    // Kana (han)dakuten are meaningful: が ≠ か, ぱ ≠ は.
+    private val latinMarks = Regex("[\\p{Mn}&&[^\\u3099\\u309A]]+")
     private val nonLetterOrDigit = Regex("[^\\p{L}\\p{N}]+")
     private val toneDigits = Regex("[1-5]")
 
@@ -20,7 +22,7 @@ object AnswerMatcher {
         // NFKC folds full-width letters (ＡＢＣ, ！) to their ASCII forms first.
         var s = Normalizer.normalize(text, Normalizer.Form.NFKC).lowercase()
         if (stripDiacritics) {
-            s = Normalizer.normalize(s, Normalizer.Form.NFD).replace(combiningMarks, "")
+            s = Normalizer.normalize(s, Normalizer.Form.NFD).replace(latinMarks, "")
             s = Normalizer.normalize(s, Normalizer.Form.NFC)
         }
         return s.replace(nonLetterOrDigit, "")

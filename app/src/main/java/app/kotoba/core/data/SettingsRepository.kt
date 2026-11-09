@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.doublePreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
@@ -17,8 +18,10 @@ import app.kotoba.core.model.StudyLanguage
 import app.kotoba.core.srs.FsrsParams
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -132,7 +135,9 @@ class SettingsRepository @Inject constructor(@ApplicationContext context: Contex
         val aiUsageRequests = intPreferencesKey("ai_usage_requests")
     }
 
-    val settings: Flow<UserSettings> = store.data.map { p ->
+    val settings: Flow<UserSettings> = store.data.catch { e ->
+        if (e is IOException) emit(emptyPreferences()) else throw e
+    }.map { p ->
         val d = UserSettings()
         UserSettings(
             onboarded = p[K.onboarded] ?: d.onboarded,
@@ -185,7 +190,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext context: Contex
             it[K.nativeLanguage] = native.code
             it[K.studyLanguages] = languages.map { l -> l.code }.toSet()
             it[K.activeLanguage] = languages.first().code
-            it[K.dailyXpGoal] = dailyGoal
+            it[K.dailyXpGoal] = dailyGoal.coerceIn(10, 1000)
         }
     }
 
@@ -208,7 +213,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext context: Contex
     suspend fun setLearningSteps(v: List<Int>) = store.edit { it[K.learningSteps] = v.joinToString(",") }
     suspend fun setRelearningSteps(v: List<Int>) = store.edit { it[K.relearningSteps] = v.joinToString(",") }
     suspend fun setDailyXpGoal(v: Int) = store.edit { it[K.dailyXpGoal] = v.coerceIn(10, 1000) }
-    suspend fun setQuickReviewMinutes(v: Int) = store.edit { it[K.quickMinutes] = v }
+    suspend fun setQuickReviewMinutes(v: Int) = store.edit { it[K.quickMinutes] = v.coerceIn(1, 60) }
     suspend fun setAutoPlayAudio(v: Boolean) = store.edit { it[K.autoPlay] = v }
     suspend fun setShowReading(v: Boolean) = store.edit { it[K.showReading] = v }
     suspend fun setTtsRate(v: Float) = store.edit { it[K.ttsRate] = v.coerceIn(0.5f, 2f) }
@@ -218,7 +223,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext context: Contex
     suspend fun setSounds(v: Boolean) = store.edit { it[K.sounds] = v }
     suspend fun setAnimations(v: Boolean) = store.edit { it[K.animations] = v }
     suspend fun setReminders(enabled: Boolean, hour: Int, minute: Int) = store.edit {
-        it[K.reminders] = enabled; it[K.reminderHour] = hour; it[K.reminderMinute] = minute
+        it[K.reminders] = enabled; it[K.reminderHour] = hour.coerceIn(0, 23); it[K.reminderMinute] = minute.coerceIn(0, 59)
     }
     suspend fun setAutoBackup(enabled: Boolean, folderUri: String) = store.edit {
         it[K.autoBackup] = enabled; it[K.backupFolder] = folderUri

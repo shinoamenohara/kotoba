@@ -65,7 +65,8 @@ object AnkiPackageReader {
             val obj = Json.parseToJsonElement(bytes.decodeToString()).jsonObject
             return obj.mapNotNull { (zipName, v) ->
                 val name = v.jsonPrimitive.contentOrNull ?: return@mapNotNull null
-                File(dir, zipName).takeIf { it.exists() }?.let { name to it }
+                File(dir, zipName).takeIf { it.exists() && it.canonicalPath.startsWith(dir.canonicalPath + File.separator) }
+                    ?.let { name to it }
             }.toMap()
         }
         // Modern: zstd-compressed protobuf MediaEntries; each media file is itself zstd-compressed.

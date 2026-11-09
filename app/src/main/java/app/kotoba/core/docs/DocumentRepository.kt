@@ -117,20 +117,25 @@ class DocumentRepository @Inject constructor(
             .ifBlank { throw DocumentParseException("Text is empty") }
         val autoTitle = md?.title?.takeIf { it.isNotBlank() } ?: body.lineSequence().first().take(60)
         val dir = newDocumentDir()
-        val textFile = File(dir, TEXT_FILE).apply { writeText(body) }
-        dao.insert(
-            DocumentEntity(
-                title = title.trim().ifEmpty { autoTitle }.take(200),
-                kind = kind,
-                format = if (looksMarkdown) DocumentFormat.MARKDOWN else DocumentFormat.TXT,
-                language = (language ?: detectLanguage(body)).code,
-                filePath = textFile.absolutePath,
-                textPath = textFile.absolutePath,
-                sizeBytes = textFile.length(),
-                length = body.length,
-                addedAt = time.now(),
-            ),
-        )
+        try {
+            val textFile = File(dir, TEXT_FILE).apply { writeText(body) }
+            dao.insert(
+                DocumentEntity(
+                    title = title.trim().ifEmpty { autoTitle }.take(200),
+                    kind = kind,
+                    format = if (looksMarkdown) DocumentFormat.MARKDOWN else DocumentFormat.TXT,
+                    language = (language ?: detectLanguage(body)).code,
+                    filePath = textFile.absolutePath,
+                    textPath = textFile.absolutePath,
+                    sizeBytes = textFile.length(),
+                    length = body.length,
+                    addedAt = time.now(),
+                ),
+            )
+        } catch (e: Throwable) {
+            dir.deleteRecursively()
+            throw e
+        }
     }
 
     /** Manga from individual images (sorted naturally by file name). */

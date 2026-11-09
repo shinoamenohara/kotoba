@@ -270,16 +270,22 @@ class StudyRepository @Inject constructor(
     }
 
     /**
-     * Applies recency decay: words not reviewed for long (retrievability < 70%) drop a mastery level.
-     * Run daily by the maintenance worker.
+     * Applies recency decay: words not reviewed for long cap their mastery (retrievability < 70% → at most
+     * FAMILIAR, < 50% → LEARNING). The cap is absolute, so running it daily does not keep demoting.
      */
     suspend fun applyMasteryDecay(): Int {
         val fsrs = fsrs()
         val now = time.now()
         val changed = cards.all().mapNotNull { c ->
             if (c.state != SrsState.REVIEW || c.mastery.ordinal <= Mastery.LEARNING.ordinal) return@mapNotNull null
-            if (fsrs.retrievability(c.toSrs(), now) >= 0.7) return@mapNotNull null
-            c.copy(mastery = Mastery.entries[c.mastery.ordinal - 1], updatedAt = now)
+            val r = fsrs.retrievability(c.toSrs(), now)
+            val cap = when {
+                r < 0.5 -> Mastery.LEARNING
+                r < 0.7 -> Mastery.FAMILIAR
+                else -> return@mapNotNull null
+            }
+            if (c.mastery.ordinal <= cap.ordinal) return@mapNotNull null
+            c.copy(mastery = cap, updatedAt = now)
         }
         if (changed.isNotEmpty()) cards.updateAll(changed)
         return changed.size

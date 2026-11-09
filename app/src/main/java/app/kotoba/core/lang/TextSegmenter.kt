@@ -1,5 +1,6 @@
 package app.kotoba.core.lang
 
+import android.annotation.SuppressLint
 import android.icu.text.BreakIterator
 import android.icu.text.Transliterator
 import android.os.Build
@@ -54,7 +55,7 @@ class TextSegmenter @Inject constructor() {
     /** Unique words of a text with frequencies — for deck generation and book statistics. */
     fun wordFrequencies(text: String, lang: StudyLanguage): Map<String, Int> =
         tokenize(text, lang).asSequence()
-            .filter { it.isWord && it.text.any(Char::isLetter) }
+            .filter { it.isWord && it.text.codePoints().anyMatch { cp -> Character.isLetter(cp) } }
             .map { if (lang.usesSpaces) it.text.lowercase(lang.locale) else it.text }
             .groupingBy { it }.eachCount()
 }
@@ -64,12 +65,16 @@ class TextSegmenter @Inject constructor() {
 class Romanizer @Inject constructor() {
     private val cache = HashMap<String, Transliterator?>()
 
+    @Synchronized
     private fun transliterator(id: String): Transliterator? {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) return null
         return cache.getOrPut(id) { runCatching { Transliterator.getInstance(id) }.getOrNull() }
     }
 
     /** Pinyin with tone marks (zh), hiragana→rōmaji (ja kana only), RR (ko). Null if unsupported. */
+    // transliterator() returns null below API 29, so transliterate() is never reached there.
+    @SuppressLint("NewApi")
+    @Synchronized
     fun romanize(text: String, lang: StudyLanguage): String? = when (lang) {
         StudyLanguage.ZH -> transliterator("Han-Latin")?.transliterate(text)
         StudyLanguage.JA -> if (text.all { isKana(it) || !it.isLetter() }) transliterator("Any-Latin")?.transliterate(text) else null
@@ -83,6 +88,7 @@ class Romanizer @Inject constructor() {
     companion object {
         fun isKana(c: Char): Boolean = c in '\u3040'..'\u30FF' || c == 'ー'
         fun isHan(c: Char): Boolean = Character.UnicodeScript.of(c.code) == Character.UnicodeScript.HAN
-        fun containsCjk(text: String): Boolean = text.any { isHan(it) || isKana(it) }
+        fun containsCjk(text: String): Boolean =
+            text.codePoints().anyMatch { Character.UnicodeScript.of(it) == Character.UnicodeScript.HAN || (it < 0x10000 && isKana(it.toChar())) }
     }
 }
