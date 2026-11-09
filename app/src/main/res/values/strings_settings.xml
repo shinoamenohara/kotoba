@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_profile_name">Your name</string>
+    <string name="settings_profile_unnamed">Learner</string>
+    <string name="settings_profile_edit">Tap to change your name</string>
+
+    <string name="settings_group_languages">Languages</string>
+    <string name="settings_study_languages">Languages I study</string>
+    <string name="settings_featured_languages">Full support: readings, levels, OCR</string>
+    <string name="settings_other_languages">More languages</string>
+    <string name="settings_language_levels">%1$s levels %2$s–%3$s</string>
+    <string name="settings_active_language">Active language</string>
+    <string name="settings_native_language">My native language</string>
+    <string name="settings_starter_decks">Install starter decks</string>
+    <string name="settings_starter_decks_desc">Add built-in vocabulary decks for %1$s</string>
+    <string name="settings_starter_unavailable">No starter decks for this language yet</string>
+    <string name="settings_starter_none">Starter decks are already installed</string>
+    <plurals name="settings_starter_added">
+        <item quantity="one">Added %d word</item>
+        <item quantity="other">Added %d words</item>
+    </plurals>
+    <string name="settings_interface_language">App language</string>
+    <string name="settings_ui_lang_system">System default</string>
+    <string name="settings_ui_lang_old_android">follows the system on this Android version</string>
+    <string name="settings_ui_lang_old_android_long">On Android 12 and older the app follows the system language. The choice is saved and applied after you update to Android 13+.</string>
+
+    <string name="settings_group_learning">Learning</string>
+    <string name="settings_new_per_day">New words per day</string>
+    <string name="settings_max_reviews">Max reviews per day</string>
+    <string name="settings_retention">Desired retention</string>
+    <string name="settings_retention_desc">How likely you should be to remember a word when it comes up for review. Higher means fewer forgotten words but more daily reviews; 90% is a good balance.</string>
+    <string name="settings_learning_steps">Learning steps</string>
+    <string name="settings_relearning_steps">Relearning steps</string>
+    <string name="settings_steps_desc">Short intervals in minutes before a new or forgotten word moves to long-term scheduling, separated by commas.</string>
+    <string name="settings_steps_label">Minutes, e.g. 1, 10</string>
+    <string name="settings_steps_invalid">Enter whole minutes separated by commas</string>
+    <string name="settings_daily_xp">Daily XP goal</string>
+    <string name="settings_quick_review">Quick Review length</string>
+    <string name="settings_minutes_short">%1$d min</string>
+    <string name="settings_autoplay">Play pronunciation automatically</string>
+    <string name="settings_show_reading">Show readings</string>
+    <string name="settings_show_reading_desc">Kana for Japanese, pinyin for Chinese</string>
+    <string name="settings_tts_speed">Speech speed</string>
+
+    <string name="settings_group_appearance">Appearance &amp; feedback</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_dynamic_color">Dynamic colour</string>
+    <string name="settings_dynamic_color_desc">Use colours from your wallpaper</string>
+    <string name="settings_animations">Animations</string>
+    <string name="settings_sounds">Sounds</string>
+    <string name="settings_haptics">Haptic feedback</string>
+
+    <string name="settings_group_notifications">Notifications</string>
+    <string name="settings_reminders">Daily reminder</string>
+    <string name="settings_reminders_desc">A nudge when words are due for review</string>
+    <string name="settings_reminder_time">Reminder time</string>
+
+    <string name="settings_group_ai">AI</string>
+    <string name="settings_ai">AI providers &amp; keys</string>
+    <string name="settings_ai_ready">%1$s · %2$s</string>
+    <string name="settings_ai_not_configured">%1$s · not set up</string>
+
+    <string name="settings_group_data">Your data</string>
+    <string name="settings_import_export">Import &amp; export</string>
+    <string name="settings_import_export_desc">Anki, CSV, JSON, dictionaries</string>
+    <string name="settings_storage">Storage</string>
+    <string name="settings_storage_desc">Books, media, cache and translation models</string>
+
+    <string name="settings_group_backup">Backup &amp; sync</string>
+    <string name="settings_backup_now">Back up now</string>
+    <string name="settings_last_backup">Last backup: %1$s</string>
+    <string name="settings_never_backed_up">No backups yet</string>
+    <string name="settings_backup_options_desc">Your words, decks, progress and statistics are always included.</string>
+    <string name="settings_backup_include_docs">Include books &amp; documents</string>
+    <string name="settings_backup_include_media">Include images &amp; audio</string>
+    <string name="settings_backup_choose_location">Choose location</string>
+    <string name="settings_backup_done">Backup saved</string>
+    <string name="settings_restore">Restore from backup</string>
+    <string name="settings_restore_desc">Replace data on this device with a backup file</string>
+    <string name="settings_restore_confirm_title">Replace your data?</string>
+    <string name="settings_restore_confirm_body">Backup from %1$s with %2$d words in %3$d decks. Current words, progress and statistics on this device will be replaced.</string>
+    <plurals name="settings_restore_docs">
+        <item quantity="one">Includes %d document.</item>
+        <item quantity="other">Includes %d documents.</item>
+    </plurals>
+    <string name="settings_restore_replace">Replace</string>
+    <string name="settings_restore_done">Data restored</string>
+    <string name="settings_auto_backup">Automatic daily backup</string>
+    <string name="settings_auto_backup_desc">Pick a folder — choose Google Drive or another cloud folder to sync between devices</string>
+    <string name="settings_backup_folder">Backup folder</string>
+    <string name="settings_backup_to_folder">Back up to folder</string>
+    <string name="settings_restore_from_folder">Restore latest</string>
+    <string name="settings_backup_folder_empty">No Kotoba backups found in this folder</string>
+    <string name="settings_error">Something went wrong: %1$s</string>
+
+    <string name="settings_group_about">About</string>
+    <string name="settings_version">Version %1$s (%2$d)</string>
+
+    <!-- Storage -->
+    <string name="settings_storage_used">Used by Kotoba</string>
+    <string name="settings_storage_breakdown">Breakdown</string>
+    <string name="settings_storage_documents">Documents</string>
+    <string name="settings_storage_media">Media</string>
+    <string name="settings_storage_database">Database</string>
+    <string name="settings_storage_cache">Cache</string>
+    <string name="settings_storage_clear">Clear</string>
+    <string name="settings_storage_no_documents">No imported books or documents</string>
+    <string name="settings_storage_delete_title">Delete document?</string>
+    <string name="settings_storage_delete_body">“%1$s” and its files will be removed. Words you saved from it stay in your library.</string>
+    <string name="settings_storage_models">Offline translation models</string>
+    <string name="settings_storage_no_models">No models downloaded</string>
+    <string name="settings_storage_models_error">Couldn’t read downloaded models</string>
+    <string name="settings_storage_models_desc">Models are downloaded on demand for offline translation (~30 MB each).</string>
+    <string name="settings_storage_delete_model">Delete the %1$s model?</string>
+
+    <!-- Import & export -->
+    <string name="import_title">Import &amp; export</string>
+    <string name="import_tab_import">Import</string>
+    <string name="import_tab_export">Export</string>
+    <string name="import_hero_title">Bring your words in</string>
+    <string name="import_hero_body">Import Anki decks with media and progress, spreadsheets, JSON or your own word lists.</string>
+    <string name="import_choose_file">Choose file</string>
+    <string name="import_supported">Supported formats</string>
+    <string name="import_format_anki">Anki deck</string>
+    <string name="import_format_anki_desc">.apkg / .colpkg — notes, tags, audio, images and review progress</string>
+    <string name="import_format_csv">CSV / TSV</string>
+    <string name="import_format_csv_desc">Delimiter, quotes and header row are detected automatically</string>
+    <string name="import_format_json">JSON</string>
+    <string name="import_format_json_desc">Kotoba export or any list of objects</string>
+    <string name="import_format_dict">Word list</string>
+    <string name="import_format_dict_desc">One per line: word = translation, word - translation, word;translation or tab</string>
+    <string name="import_format_kotoba">Kotoba export</string>
+    <string name="import_notebooklm">Import NotebookLM notes / documents</string>
+    <string name="import_notebooklm_desc">Read notes, articles and books and collect words in context</string>
+    <string name="import_reading">Reading %1$s…</string>
+    <string name="import_importing">Importing %1$s…</string>
+    <string name="import_failed_title">Couldn’t import this file</string>
+    <string name="import_failed_empty">No words were found in this file.</string>
+    <string name="import_error_generic">Error: %1$s</string>
+    <string name="import_stat_records">words</string>
+    <string name="import_stat_decks">decks</string>
+    <string name="import_stat_reviewed">studied</string>
+    <string name="import_stat_media">media</string>
+    <string name="import_target_language">Language</string>
+    <string name="import_deck">Deck</string>
+    <plurals name="import_keep_decks">
+        <item quantity="one">Keep the original deck</item>
+        <item quantity="other">Keep the original %d decks</item>
+    </plurals>
+    <string name="import_new_deck">New deck</string>
+    <string name="import_deck_name">Deck name</string>
+    <string name="import_existing_deck">Add to an existing deck</string>
+    <string name="import_options">Options</string>
+    <string name="import_skip_duplicates">Skip duplicates</string>
+    <string name="import_skip_duplicates_desc">Words you already have in this language are not added again</string>
+    <string name="import_progress">Import review progress</string>
+    <string name="import_progress_desc">Studied cards keep their intervals and due dates</string>
+    <string name="import_mapping">Fields</string>
+    <plurals name="import_n_records">
+        <item quantity="one">%d note</item>
+        <item quantity="other">%d notes</item>
+    </plurals>
+    <string name="import_need_term">Map at least one field to “Word”.</string>
+    <plurals name="import_import_n">
+        <item quantity="one">Import %d word</item>
+        <item quantity="other">Import %d words</item>
+    </plurals>
+    <string name="import_target_term">Word</string>
+    <string name="import_target_translation">Translation</string>
+    <string name="import_target_reading">Reading</string>
+    <string name="import_target_ipa">IPA</string>
+    <string name="import_target_example">Example</string>
+    <string name="import_target_example_translation">Example translation</string>
+    <string name="import_target_notes">Notes</string>
+    <string name="import_target_pos">Part of speech</string>
+    <string name="import_target_tags">Tags</string>
+    <string name="import_target_audio">Audio</string>
+    <string name="import_target_image">Image</string>
+    <string name="import_target_ignore">Skip</string>
+    <string name="import_done_title">Import complete</string>
+    <string name="import_done_nothing">Nothing new to add</string>
+    <string name="import_report_added">Added</string>
+    <string name="import_report_duplicates">Duplicates</string>
+    <string name="import_report_errors">Errors</string>
+    <plurals name="import_report_decks">
+        <item quantity="one">%d deck created</item>
+        <item quantity="other">%d decks created</item>
+    </plurals>
+    <plurals name="import_report_media">
+        <item quantity="one">%d media file copied</item>
+        <item quantity="other">%d media files copied</item>
+    </plurals>
+    <plurals name="import_report_progress">
+        <item quantity="one">%d word kept its review progress</item>
+        <item quantity="other">%d words kept their review progress</item>
+    </plurals>
+    <string name="import_show_details">Show details</string>
+    <string name="import_errors_hint">Rows without a word were skipped.</string>
+    <string name="import_another">Import another</string>
+    <string name="import_export_what">What to export</string>
+    <string name="import_export_all">All words · %1$s</string>
+    <string name="import_export_format">Format</string>
+    <string name="import_export_csv">CSV</string>
+    <string name="import_export_csv_desc">For spreadsheets like Excel or Google Sheets</string>
+    <string name="import_export_tsv">Anki (TSV)</string>
+    <string name="import_export_tsv_desc">Opens directly in Anki via File → Import</string>
+    <string name="import_export_json">Kotoba JSON</string>
+    <string name="import_export_json_desc">Lossless: progress, contexts and all card fields</string>
+    <string name="import_save_file">Save</string>
+    <string name="import_share">Share</string>
+    <string name="import_share_title">Share words</string>
+    <plurals name="import_exported_words">
+        <item quantity="one">Exported %d word</item>
+        <item quantity="other">Exported %d words</item>
+    </plurals>
+</resources>

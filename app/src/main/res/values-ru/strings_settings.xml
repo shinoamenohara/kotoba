@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Settings -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_profile_name">Ваше имя</string>
+    <string name="settings_profile_unnamed">Ученик</string>
+    <string name="settings_profile_edit">Нажмите, чтобы изменить имя</string>
+
+    <string name="settings_group_languages">Языки</string>
+    <string name="settings_study_languages">Изучаемые языки</string>
+    <string name="settings_featured_languages">Полная поддержка: чтения, уровни, OCR</string>
+    <string name="settings_other_languages">Другие языки</string>
+    <string name="settings_language_levels">Уровни %1$s: %2$s–%3$s</string>
+    <string name="settings_active_language">Активный язык</string>
+    <string name="settings_native_language">Мой родной язык</string>
+    <string name="settings_starter_decks">Установить стартовые колоды</string>
+    <string name="settings_starter_decks_desc">Добавить встроенные колоды для языка %1$s</string>
+    <string name="settings_starter_unavailable">Для этого языка пока нет стартовых колод</string>
+    <string name="settings_starter_none">Стартовые колоды уже установлены</string>
+    <plurals name="settings_starter_added">
+        <item quantity="one">Добавлено %d слово</item>
+        <item quantity="few">Добавлено %d слова</item>
+        <item quantity="many">Добавлено %d слов</item>
+        <item quantity="other">Добавлено %d слова</item>
+    </plurals>
+    <string name="settings_interface_language">Язык приложения</string>
+    <string name="settings_ui_lang_system">Как в системе</string>
+    <string name="settings_ui_lang_old_android">на этой версии Android — как в системе</string>
+    <string name="settings_ui_lang_old_android_long">На Android 12 и ниже приложение использует язык системы. Выбор сохранится и применится после обновления до Android 13+.</string>
+
+    <string name="settings_group_learning">Обучение</string>
+    <string name="settings_new_per_day">Новых слов в день</string>
+    <string name="settings_max_reviews">Максимум повторений в день</string>
+    <string name="settings_retention">Целевое запоминание</string>
+    <string name="settings_retention_desc">Вероятность вспомнить слово в момент повторения. Чем выше — тем меньше забытых слов, но больше повторений каждый день. 90% — хороший баланс.</string>
+    <string name="settings_learning_steps">Шаги изучения</string>
+    <string name="settings_relearning_steps">Шаги переизучения</string>
+    <string name="settings_steps_desc">Короткие интервалы в минутах через запятую, прежде чем новое или забытое слово перейдёт к долгосрочному расписанию.</string>
+    <string name="settings_steps_label">Минуты, например 1, 10</string>
+    <string name="settings_steps_invalid">Введите целые минуты через запятую</string>
+    <string name="settings_daily_xp">Дневная цель XP</string>
+    <string name="settings_quick_review">Длительность Quick Review</string>
+    <string name="settings_minutes_short">%1$d мин</string>
+    <string name="settings_autoplay">Автоматически произносить слова</string>
+    <string name="settings_show_reading">Показывать чтения</string>
+    <string name="settings_show_reading_desc">Кана для японского, пиньинь для китайского</string>
+    <string name="settings_tts_speed">Скорость речи</string>
+
+    <string name="settings_group_appearance">Внешний вид и отклик</string>
+    <string name="settings_theme">Тема</string>
+    <string name="settings_theme_system">Системная</string>
+    <string name="settings_theme_light">Светлая</string>
+    <string name="settings_theme_dark">Тёмная</string>
+    <string name="settings_dynamic_color">Динамические цвета</string>
+    <string name="settings_dynamic_color_desc">Цвета из ваших обоев</string>
+    <string name="settings_animations">Анимации</string>
+    <string name="settings_sounds">Звуки</string>
+    <string name="settings_haptics">Виброотклик</string>
+
+    <string name="settings_group_notifications">Уведомления</string>
+    <string name="settings_reminders">Ежедневное напоминание</string>
+    <string name="settings_reminders_desc">Напомним, когда пора повторить слова</string>
+    <string name="settings_reminder_time">Время напоминания</string>
+
+    <string name="settings_group_ai">AI</string>
+    <string name="settings_ai">AI-провайдеры и ключи</string>
+    <string name="settings_ai_ready">%1$s · %2$s</string>
+    <string name="settings_ai_not_configured">%1$s · не настроен</string>
+
+    <string name="settings_group_data">Ваши данные</string>
+    <string name="settings_import_export">Импорт и экспорт</string>
+    <string name="settings_import_export_desc">Anki, CSV, JSON, словари</string>
+    <string name="settings_storage">Хранилище</string>
+    <string name="settings_storage_desc">Книги, медиа, кэш и модели перевода</string>
+
+    <string name="settings_group_backup">Резервное копирование и синхронизация</string>
+    <string name="settings_backup_now">Создать резервную копию</string>
+    <string name="settings_last_backup">Последняя копия: %1$s</string>
+    <string name="settings_never_backed_up">Резервных копий пока нет</string>
+    <string name="settings_backup_options_desc">Слова, прогресс и статистика сохраняются всегда.</string>
+    <string name="settings_backup_include_docs">Включить книги и документы</string>
+    <string name="settings_backup_include_media">Включить картинки и аудио</string>
+    <string name="settings_backup_choose_location">Выбрать место</string>
+    <string name="settings_backup_done">Резервная копия сохранена</string>
+    <string name="settings_restore">Восстановить из копии</string>
+    <string name="settings_restore_desc">Заменить данные на устройстве данными из файла</string>
+    <string name="settings_restore_confirm_title">Заменить данные?</string>
+    <string name="settings_restore_confirm_body">Копия от %1$s: слов — %2$d, колод — %3$d. Текущие слова, прогресс и статистика на этом устройстве будут заменены.</string>
+    <plurals name="settings_restore_docs">
+        <item quantity="one">Содержит %d документ.</item>
+        <item quantity="few">Содержит %d документа.</item>
+        <item quantity="many">Содержит %d документов.</item>
+        <item quantity="other">Содержит %d документа.</item>
+    </plurals>
+    <string name="settings_restore_replace">Заменить</string>
+    <string name="settings_restore_done">Данные восстановлены</string>
+    <string name="settings_auto_backup">Автоматическая ежедневная копия</string>
+    <string name="settings_auto_backup_desc">Выберите папку — Google Диск или другое облако позволит синхронизировать устройства</string>
+    <string name="settings_backup_folder">Папка для копий</string>
+    <string name="settings_backup_to_folder">Сохранить в папку</string>
+    <string name="settings_restore_from_folder">Восстановить последнюю</string>
+    <string name="settings_backup_folder_empty">В этой папке нет копий Kotoba</string>
+    <string name="settings_error">Что-то пошло не так: %1$s</string>
+
+    <string name="settings_group_about">О приложении</string>
+    <string name="settings_version">Версия %1$s (%2$d)</string>
+
+    <!-- Storage -->
+    <string name="settings_storage_used">Занято Kotoba</string>
+    <string name="settings_storage_breakdown">Подробно</string>
+    <string name="settings_storage_documents">Документы</string>
+    <string name="settings_storage_media">Медиа</string>
+    <string name="settings_storage_database">База данных</string>
+    <string name="settings_storage_cache">Кэш</string>
+    <string name="settings_storage_clear">Очистить</string>
+    <string name="settings_storage_no_documents">Нет импортированных книг и документов</string>
+    <string name="settings_storage_delete_title">Удалить документ?</string>
+    <string name="settings_storage_delete_body">«%1$s» и его файлы будут удалены. Сохранённые из него слова останутся в библиотеке.</string>
+    <string name="settings_storage_models">Офлайн-модели перевода</string>
+    <string name="settings_storage_no_models">Модели не загружены</string>
+    <string name="settings_storage_models_error">Не удалось получить список моделей</string>
+    <string name="settings_storage_models_desc">Модели загружаются по требованию для перевода без интернета (~30 МБ каждая).</string>
+    <string name="settings_storage_delete_model">Удалить модель «%1$s»?</string>
+
+    <!-- Import & export -->
+    <string name="import_title">Импорт и экспорт</string>
+    <string name="import_tab_import">Импорт</string>
+    <string name="import_tab_export">Экспорт</string>
+    <string name="import_hero_title">Перенесите свои слова</string>
+    <string name="import_hero_body">Импортируйте колоды Anki с медиа и прогрессом, таблицы, JSON или собственные списки слов.</string>
+    <string name="import_choose_file">Выбрать файл</string>
+    <string name="import_supported">Поддерживаемые форматы</string>
+    <string name="import_format_anki">Колода Anki</string>
+    <string name="import_format_anki_desc">.apkg / .colpkg — заметки, теги, аудио, картинки и прогресс повторений</string>
+    <string name="import_format_csv">CSV / TSV</string>
+    <string name="import_format_csv_desc">Разделитель, кавычки и заголовок определяются автоматически</string>
+    <string name="import_format_json">JSON</string>
+    <string name="import_format_json_desc">Экспорт Kotoba или любой список объектов</string>
+    <string name="import_format_dict">Список слов</string>
+    <string name="import_format_dict_desc">По одному в строке: слово = перевод, слово - перевод, слово;перевод или табуляция</string>
+    <string name="import_format_kotoba">Экспорт Kotoba</string>
+    <string name="import_notebooklm">Импорт заметок NotebookLM / документов</string>
+    <string name="import_notebooklm_desc">Читайте заметки, статьи и книги и собирайте слова в контексте</string>
+    <string name="import_reading">Читаем %1$s…</string>
+    <string name="import_importing">Импортируем %1$s…</string>
+    <string name="import_failed_title">Не удалось импортировать файл</string>
+    <string name="import_failed_empty">В файле не найдено слов.</string>
+    <string name="import_error_generic">Ошибка: %1$s</string>
+    <string name="import_stat_records">слов</string>
+    <string name="import_stat_decks">колод</string>
+    <string name="import_stat_reviewed">изучено</string>
+    <string name="import_stat_media">медиа</string>
+    <string name="import_target_language">Язык</string>
+    <string name="import_deck">Колода</string>
+    <plurals name="import_keep_decks">
+        <item quantity="one">Сохранить исходную колоду (%d)</item>
+        <item quantity="few">Сохранить исходные %d колоды</item>
+        <item quantity="many">Сохранить исходные %d колод</item>
+        <item quantity="other">Сохранить исходные %d колоды</item>
+    </plurals>
+    <string name="import_new_deck">Новая колода</string>
+    <string name="import_deck_name">Название колоды</string>
+    <string name="import_existing_deck">Добавить в существующую колоду</string>
+    <string name="import_options">Параметры</string>
+    <string name="import_skip_duplicates">Пропускать дубликаты</string>
+    <string name="import_skip_duplicates_desc">Слова, которые уже есть в этом языке, не добавляются повторно</string>
+    <string name="import_progress">Импортировать прогресс</string>
+    <string name="import_progress_desc">Изученные карточки сохранят интервалы и даты повторения</string>
+    <string name="import_mapping">Поля</string>
+    <plurals name="import_n_records">
+        <item quantity="one">%d заметка</item>
+        <item quantity="few">%d заметки</item>
+        <item quantity="many">%d заметок</item>
+        <item quantity="other">%d заметки</item>
+    </plurals>
+    <string name="import_need_term">Сопоставьте хотя бы одно поле со «Словом».</string>
+    <plurals name="import_import_n">
+        <item quantity="one">Импортировать %d слово</item>
+        <item quantity="few">Импортировать %d слова</item>
+        <item quantity="many">Импортировать %d слов</item>
+        <item quantity="other">Импортировать %d слова</item>
+    </plurals>
+    <string name="import_target_term">Слово</string>
+    <string name="import_target_translation">Перевод</string>
+    <string name="import_target_reading">Чтение</string>
+    <string name="import_target_ipa">IPA</string>
+    <string name="import_target_example">Пример</string>
+    <string name="import_target_example_translation">Перевод примера</string>
+    <string name="import_target_notes">Заметки</string>
+    <string name="import_target_pos">Часть речи</string>
+    <string name="import_target_tags">Теги</string>
+    <string name="import_target_audio">Аудио</string>
+    <string name="import_target_image">Картинка</string>
+    <string name="import_target_ignore">Пропустить</string>
+    <string name="import_done_title">Импорт завершён</string>
+    <string name="import_done_nothing">Нечего добавить</string>
+    <string name="import_report_added">Добавлено</string>
+    <string name="import_report_duplicates">Дубликаты</string>
+    <string name="import_report_errors">Ошибки</string>
+    <plurals name="import_report_decks">
+        <item quantity="one">Создана %d колода</item>
+        <item quantity="few">Создано %d колоды</item>
+        <item quantity="many">Создано %d колод</item>
+        <item quantity="other">Создано %d колоды</item>
+    </plurals>
+    <plurals name="import_report_media">
+        <item quantity="one">Скопирован %d медиафайл</item>
+        <item quantity="few">Скопировано %d медиафайла</item>
+        <item quantity="many">Скопировано %d медиафайлов</item>
+        <item quantity="other">Скопировано %d медиафайла</item>
+    </plurals>
+    <plurals name="import_report_progress">
+        <item quantity="one">%d слово сохранило прогресс</item>
+        <item quantity="few">%d слова сохранили прогресс</item>
+        <item quantity="many">%d слов сохранили прогресс</item>
+        <item quantity="other">%d слова сохранили прогресс</item>
+    </plurals>
+    <string name="import_show_details">Подробности</string>
+    <string name="import_errors_hint">Строки без слова были пропущены.</string>
+    <string name="import_another">Импортировать ещё</string>
+    <string name="import_export_what">Что экспортировать</string>
+    <string name="import_export_all">Все слова · %1$s</string>
+    <string name="import_export_format">Формат</string>
+    <string name="import_export_csv">CSV</string>
+    <string name="import_export_csv_desc">Для таблиц: Excel, Google Таблицы</string>
+    <string name="import_export_tsv">Anki (TSV)</string>
+    <string name="import_export_tsv_desc">Открывается в Anki через Файл → Импорт</string>
+    <string name="import_export_json">Kotoba JSON</string>
+    <string name="import_export_json_desc">Без потерь: прогресс, контексты и все поля карточек</string>
+    <string name="import_save_file">Сохранить</string>
+    <string name="import_share">Поделиться</string>
+    <string name="import_share_title">Поделиться словами</string>
+    <plurals name="import_exported_words">
+        <item quantity="one">Экспортировано %d слово</item>
+        <item quantity="few">Экспортировано %d слова</item>
+        <item quantity="many">Экспортировано %d слов</item>
+        <item quantity="other">Экспортировано %d слова</item>
+    </plurals>
+</resources>
