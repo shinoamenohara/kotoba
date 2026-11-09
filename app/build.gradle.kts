@@ -16,13 +16,29 @@ android {
         minSdk = 26
         targetSdk = 35
         versionCode = 1
-        versionName = "0.1.0"
+        versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
     }
 
+    // Release signing comes from the environment (CI secrets or a local keystore); without it the release APK is unsigned.
+    val keystorePath = System.getenv("KOTOBA_KEYSTORE_FILE")
+    signingConfigs {
+        if (keystorePath != null) {
+            create("release") {
+                storeFile = file(keystorePath)
+                storePassword = System.getenv("KOTOBA_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("KOTOBA_KEY_ALIAS") ?: "kotoba"
+                keyPassword = System.getenv("KOTOBA_KEY_PASSWORD") ?: System.getenv("KOTOBA_KEYSTORE_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
+            // -PdebugSignRelease lets CI smoke-test the minified build without the real key.
+            if (keystorePath != null) signingConfig = signingConfigs.getByName("release")
+            else if (project.hasProperty("debugSignRelease")) signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -46,7 +62,17 @@ android {
         buildConfig = true
     }
     packaging {
-        resources.excludes += setOf("/META-INF/{AL2.0,LGPL2.1}", "META-INF/DEPENDENCIES")
+        // PdfBox pulls in bouncycastle; its post-quantum parameter tables (~8 MB) are never used.
+        resources.excludes += setOf("/META-INF/{AL2.0,LGPL2.1}", "META-INF/DEPENDENCIES", "org/bouncycastle/pqc/**")
+    }
+    // ML Kit OCR/translation native libs dominate the size, so ship one APK per ABI plus a universal one.
+    splits {
+        abi {
+            isEnable = true
+            reset()
+            include("arm64-v8a", "armeabi-v7a", "x86_64")
+            isUniversalApk = true
+        }
     }
     testOptions {
         unitTests.isIncludeAndroidResources = true
