@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Statistics -->
+    <string name="stats_title">Statistics</string>
+    <string name="stats_share">Share</string>
+    <string name="stats_vocab_map">Vocabulary map</string>
+    <string name="stats_open_vocab_map">Open vocabulary map</string>
+    <string name="stats_period_day">Day</string>
+    <string name="stats_period_week">Week</string>
+    <string name="stats_period_month">Month</string>
+    <string name="stats_report_day">Today\'s report</string>
+    <string name="stats_report_week">Weekly report</string>
+    <string name="stats_report_month">Monthly report</string>
+    <string name="stats_new_words">New words</string>
+    <string name="stats_reviews">Reviews</string>
+    <string name="stats_accuracy">Accuracy</string>
+    <string name="stats_study_time">Study time</string>
+    <string name="stats_avg_response">Avg. answer</string>
+    <string name="stats_xp_earned">XP earned</string>
+    <string name="stats_forgotten">Forgotten</string>
+    <string name="stats_recovered">Recovered</string>
+    <string name="stats_goal_days">Goal days</string>
+    <string name="stats_goal_reached">Goal reached</string>
+    <string name="stats_total_words">Words in library</string>
+    <string name="stats_mastered">Mastered</string>
+    <string name="stats_streak">Day streak</string>
+    <string name="stats_level_value">Level %1$d</string>
+    <string name="stats_total_xp">%1$d XP total</string>
+    <string name="stats_word_mastery">Word Mastery</string>
+    <string name="stats_new_today">today</string>
+    <string name="stats_new_week">this week</string>
+    <string name="stats_new_month">this month</string>
+    <string name="stats_series_studied">Studied</string>
+    <string name="stats_series_mastered">Mastered</string>
+    <string name="stats_chart_growth">Vocabulary growth</string>
+    <string name="stats_chart_growth_sub">Words studied and mastered over time</string>
+    <string name="stats_chart_activity">Daily activity</string>
+    <string name="stats_chart_accuracy">Correct answers</string>
+    <string name="stats_period_accuracy">Average for the period: %1$s</string>
+    <string name="stats_no_answers">No answers yet in this period</string>
+    <string name="stats_chart_categories">Progress by category</string>
+    <string name="stats_chart_categories_sub">Bar length — number of words, colours — mastery stages</string>
+    <string name="stats_chart_levels">Words by level (%1$s)</string>
+    <string name="stats_no_levels">Words have no level yet</string>
+    <string name="stats_level_none">No level</string>
+    <string name="stats_chart_hard">Hard words</string>
+    <string name="stats_chart_hard_sub">Words forgotten vs. recovered after relearning</string>
+    <plurals name="stats_weak_now">
+        <item quantity="one">%1$d weak word right now</item>
+        <item quantity="other">%1$d weak words right now</item>
+    </plurals>
+    <string name="stats_practice_weak">Practice</string>
+    <string name="stats_errors">Error analysis</string>
+    <string name="stats_most_missed">Most missed words</string>
+    <string name="stats_no_mistakes">No mistakes in this period 🎉</string>
+    <string name="stats_missed_of">%1$d of %2$d</string>
+    <string name="stats_confused_pairs">Often confused</string>
+    <string name="stats_no_confusions">No confused pairs yet</string>
+    <string name="stats_by_exercise">Accuracy by exercise</string>
+    <string name="stats_slowest">Slowest answers</string>
+    <string name="stats_history">Session history</string>
+    <string name="stats_history_empty">Your study sessions will appear here</string>
+    <string name="stats_history_line">%1$d answers · %2$d words · %3$s</string>
+    <string name="stats_history_more">…and %1$d more</string>
+    <string name="stats_today">Today</string>
+    <string name="stats_yesterday">Yesterday</string>
+    <string name="stats_duration_hm">%1$dh %2$02dm</string>
+    <string name="stats_duration_m">%1$d min</string>
+    <string name="stats_duration_s">%1$d s</string>
+    <string name="stats_share_header">📊 Kotoba · %1$s · %2$s</string>
+    <string name="stats_share_vocab">Vocabulary: %1$d words, %2$d mastered</string>
+
+    <string name="stats_ex_term_to_translation">Word → translation</string>
+    <string name="stats_ex_translation_to_term">Translation → word</string>
+    <string name="stats_ex_term_to_context">Word → context</string>
+    <string name="stats_ex_audio_to_term">Audio → word</string>
+    <string name="stats_ex_multiple_choice">Multiple choice</string>
+    <string name="stats_ex_reverse_choice">Reverse choice</string>
+    <string name="stats_ex_typing">Typing</string>
+    <string name="stats_ex_listening">Listening</string>
+    <string name="stats_ex_spelling">Spelling</string>
+    <string name="stats_ex_scramble">Word scramble</string>
+    <string name="stats_ex_fill_blank">Fill in the blank</string>
+    <string name="stats_ex_sentence_builder">Sentence builder</string>
+    <string name="stats_ex_matching">Matching</string>
+    <string name="stats_ex_context_quiz">Context quiz</string>
+    <string name="stats_ex_translation">Translation</string>
+    <string name="stats_ex_pronunciation">Pronunciation</string>
+    <string name="stats_ex_quick_review">Quick review</string>
+
+    <string name="stats_pos_noun">Nouns</string>
+    <string name="stats_pos_verb">Verbs</string>
+    <string name="stats_pos_adjective">Adjectives</string>
+    <string name="stats_pos_adverb">Adverbs</string>
+    <string name="stats_pos_pronoun">Pronouns</string>
+    <string name="stats_pos_preposition">Prepositions</string>
+    <string name="stats_pos_conjunction">Conjunctions</string>
+    <string name="stats_pos_interjection">Interjections</string>
+    <string name="stats_pos_particle">Particles</string>
+    <string name="stats_pos_counter">Counters</string>
+    <string name="stats_pos_phrase">Phrases</string>
+    <string name="stats_pos_idiom">Idioms</string>
+    <string name="stats_pos_other">Other / unspecified</string>
+
+    <!-- Vocabulary map -->
+    <string name="stats_map_size">Vocabulary size</string>
+    <string name="stats_map_categories">Categories</string>
+    <string name="stats_map_weak_hint">Highlighted categories (%1$d) are falling behind — give them some attention</string>
+    <string name="stats_map_empty_category">No words yet</string>
+    <string name="stats_map_category_counts">%1$d / %2$d mastered</string>
+    <string name="stats_map_needs_attention">Needs attention</string>
+    <string name="stats_map_levels_sub">Mastered / total words at each level</string>
+    <string name="stats_map_pos">Parts of speech</string>
+    <string name="stats_map_history">Vocabulary history</string>
+
+    <!-- Notifications -->
+    <string name="notify_channel_name">Study reminders</string>
+    <string name="notify_channel_desc">Daily reminder to review your words</string>
+    <string name="notify_title">Time to practise 📚</string>
+    <plurals name="notify_due">
+        <item quantity="one">%1$d word due</item>
+        <item quantity="other">%1$d words due</item>
+    </plurals>
+    <string name="notify_goal">Daily goal %1$d/%2$d XP</string>
+    <string name="notify_streak">streak %1$d🔥</string>
+    <string name="notify_start_streak">start a streak today 🔥</string>
+
+    <!-- Widget -->
+    <string name="widget_name">Word of the day</string>
+    <string name="widget_description">A new word every day with its reading, translation, due reviews and your streak</string>
+    <string name="widget_empty">Add words to see the word of the day</string>
+    <string name="widget_due">%1$d due</string>
+    <string name="widget_streak">%1$d🔥</string>
+    <string name="widget_loading">Loading…</string>
+</resources>
