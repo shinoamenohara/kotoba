@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Learn tab -->
+    <string name="learn_title">Учёба</string>
+    <string name="learn_daily_title">Ежедневная сессия</string>
+    <string name="learn_daily_sub">Повторения и новые слова вперемешку</string>
+    <string name="learn_daily_done">Всё повторено! Можно позаниматься ещё.</string>
+    <string name="learn_daily_start">Начать ежедневную сессию</string>
+    <string name="learn_due">к повторению</string>
+    <string name="learn_new">новых сегодня</string>
+    <string name="learn_tile_new">Новые слова</string>
+    <string name="learn_tile_review">Повторение SRS</string>
+    <string name="learn_tile_flashcards">Карточки</string>
+    <string name="learn_tile_weak">Слабые слова</string>
+    <string name="learn_quick_title">Быстрое повторение</string>
+    <string name="learn_quick_minutes">%1$d мин</string>
+    <string name="learn_mixed_sub">Тип упражнения подстраивается под уровень знания слова</string>
+    <string name="learn_exercises">Упражнения</string>
+    <string name="learn_decks">Ваши колоды</string>
+    <string name="learn_deck_stats">%1$d слов · %2$d к повторению · %3$d новых</string>
+    <string name="learn_study">Учить</string>
+    <string name="learn_no_words_title">Пока нет слов</string>
+    <string name="learn_no_words_msg">Добавьте слова в Библиотеке или импортируйте колоду, чтобы начать.</string>
+
+    <!-- Session modes -->
+    <string name="learn_mode_daily">Ежедневная сессия</string>
+    <string name="learn_mode_new">Новые слова</string>
+    <string name="learn_mode_review">Повторение</string>
+    <string name="learn_mode_weak">Слабые слова</string>
+    <string name="learn_mode_flashcards">Карточки</string>
+    <string name="learn_mode_exercise">Упражнение</string>
+    <string name="learn_mode_mixed">Смешанная практика</string>
+
+    <!-- Exercise names -->
+    <string name="learn_ex_term_translation">Слово → перевод</string>
+    <string name="learn_ex_translation_term">Перевод → слово</string>
+    <string name="learn_ex_context_card">Карточка с контекстом</string>
+    <string name="learn_ex_audio_card">Аудио-карточка</string>
+    <string name="learn_ex_choice">Выбор ответа</string>
+    <string name="learn_ex_typing">Ввод слова</string>
+    <string name="learn_ex_listening">Аудирование</string>
+    <string name="learn_ex_spelling">Правописание</string>
+    <string name="learn_ex_scramble">Собери слово</string>
+    <string name="learn_ex_fill">Заполни пропуск</string>
+    <string name="learn_ex_builder">Собери предложение</string>
+    <string name="learn_ex_matching">Сопоставление</string>
+    <string name="learn_ex_context_quiz">Слово в контексте</string>
+    <string name="learn_ex_translation">Перевод предложения</string>
+    <string name="learn_ex_pronunciation">Произношение</string>
+
+    <!-- Instructions -->
+    <string name="learn_ins_flash_term">Помните значение?</string>
+    <string name="learn_ins_flash_translation">Вспомните слово</string>
+    <string name="learn_ins_flash_context">Какое слово подходит в предложение?</string>
+    <string name="learn_ins_flash_audio">Послушайте и вспомните слово</string>
+    <string name="learn_ins_choice">Выберите перевод</string>
+    <string name="learn_ins_reverse_choice">Выберите слово</string>
+    <string name="learn_ins_typing">Напишите слово</string>
+    <string name="learn_ins_listening">Что вы слышите?</string>
+    <string name="learn_ins_spelling">Напишите услышанное слово</string>
+    <string name="learn_ins_scramble">Расставьте буквы по порядку</string>
+    <string name="learn_ins_fill">Заполните пропуск</string>
+    <string name="learn_ins_builder">Соберите предложение</string>
+    <string name="learn_ins_matching">Сопоставьте слова и переводы</string>
+    <string name="learn_ins_context">Что значит выделенное слово?</string>
+    <string name="learn_ins_translation">Переведите предложение</string>
+    <string name="learn_ins_pronunciation">Произнесите слово вслух</string>
+    <string name="learn_ins_quick">Знаете?</string>
+
+    <!-- Flashcards -->
+    <string name="learn_show_answer">Показать ответ</string>
+    <string name="learn_tap_to_flip">Нажмите на карточку, чтобы перевернуть</string>
+    <string name="learn_tap_to_replay">Нажмите, чтобы прослушать ещё раз</string>
+    <string name="learn_more_info">Подробнее</string>
+    <string name="learn_examples">Примеры</string>
+    <string name="learn_synonyms">Синонимы</string>
+    <string name="learn_antonyms">Антонимы</string>
+    <string name="learn_forms">Формы</string>
+    <string name="learn_source">Источник: %1$s</string>
+    <string name="learn_rate_again">Снова</string>
+    <string name="learn_rate_hard">Трудно</string>
+    <string name="learn_rate_good">Хорошо</string>
+    <string name="learn_rate_easy">Легко</string>
+
+    <!-- Exercises -->
+    <string name="learn_check">Проверить</string>
+    <string name="learn_dont_know">Не знаю</string>
+    <string name="learn_slow">Медленно</string>
+    <string name="learn_type_instead">Ввести вручную</string>
+    <string name="learn_type_hint">Введите ответ</string>
+    <string name="learn_type_hint_ja">Кандзи или кана</string>
+    <string name="learn_type_hint_zh">Иероглифы или пиньинь</string>
+    <string name="learn_hint_letter">Подсказка: буква</string>
+    <string name="learn_reveal">Показать</string>
+    <string name="learn_builder_uses">Слово: %1$s</string>
+    <string name="learn_translation_hint">Ваш перевод</string>
+    <string name="learn_ai_check">Проверить с ИИ</string>
+    <string name="learn_ai_checking">ИИ проверяет…</string>
+    <string name="learn_ai_failed">Проверка ИИ не удалась — сравните с эталоном.</string>
+    <string name="learn_no_reference">Для этого предложения нет эталонного перевода.</string>
+    <string name="learn_self_assess">Как получилось?</string>
+    <string name="learn_self_wrong">Неверно</string>
+    <string name="learn_self_almost">Почти</string>
+    <string name="learn_self_right">Верно</string>
+    <string name="learn_pron_speak">Говорить</string>
+    <string name="learn_pron_tap">Нажмите на микрофон и произнесите слово</string>
+    <string name="learn_pron_listening">Слушаю…</string>
+    <string name="learn_pron_heard">Распознано: «%1$s»</string>
+    <string name="learn_pron_nothing">Не удалось расслышать</string>
+    <string name="learn_pron_tries">Осталось попыток: %1$d</string>
+    <string name="learn_pron_unavailable">Распознавание речи недоступно на этом устройстве.</string>
+    <string name="learn_pron_denied">Нет доступа к микрофону.</string>
+    <string name="learn_pron_self">Произнесите вслух и оцените себя</string>
+
+    <!-- Feedback -->
+    <string name="learn_fb_correct">Верно!</string>
+    <string name="learn_fb_close">Почти!</string>
+    <string name="learn_fb_wrong">Не совсем</string>
+    <string name="learn_fb_your_answer">Ваш ответ: %1$s</string>
+    <string name="learn_xp_plus">+%1$d XP</string>
+    <string name="learn_combo">🔥 %1$d</string>
+    <string name="learn_finish">Завершить сессию</string>
+
+    <!-- Quick review -->
+    <string name="learn_quick_done">Ответов: %1$d · знаю: %2$d</string>
+    <string name="learn_quick_tap">Нажмите, чтобы увидеть перевод · свайп → знаю, ← не знаю</string>
+    <string name="learn_quick_know">Знаю</string>
+    <string name="learn_quick_dont_know">Не знаю</string>
+
+    <!-- Empty -->
+    <string name="learn_empty_title">Здесь пока нечего учить</string>
+    <string name="learn_empty_msg">Всё повторено. Добавьте новые слова или выберите другой режим.</string>
+    <string name="learn_empty_weak_title">Нет слабых слов</string>
+    <string name="learn_empty_weak_msg">Отлично — сейчас ни одно слово не вызывает трудностей.</string>
+
+    <!-- Summary -->
+    <string name="learn_sum_header">Сессия завершена</string>
+    <string name="learn_sum_title">Отличная работа!</string>
+    <string name="learn_sum_title_empty">Сессия окончена</string>
+    <string name="learn_sum_minutes">Занятие: %1$d мин</string>
+    <string name="learn_sum_goal">Дневная цель выполнена!</string>
+    <string name="learn_sum_goal_sub">Продолжите серию завтра.</string>
+    <string name="learn_sum_answered">Ответов</string>
+    <string name="learn_sum_accuracy">Точность</string>
+    <string name="learn_sum_xp">Получено XP</string>
+    <string name="learn_sum_combo">Лучшее комбо</string>
+    <string name="learn_sum_achievements">Новые достижения</string>
+    <string name="learn_sum_up">Улучшились (%1$d)</string>
+    <string name="learn_sum_down">Требуют внимания (%1$d)</string>
+    <string name="learn_sum_more">Продолжить учёбу</string>
+
+    <!-- Weak words -->
+    <string name="learn_weak_title">Слабые слова</string>
+    <string name="learn_weak_intro">Слова, которые вы забываете, путаете или вспоминаете медленно. Короткая тренировка исправит большинство из них.</string>
+    <string name="learn_weak_confused">Часто путаете</string>
+    <string name="learn_weak_words">Слабые слова (%1$d)</string>
+    <string name="learn_weak_practice">Тренировать слабые слова (%1$d)</string>
+    <string name="learn_weak_none">Слабые слова появятся здесь по мере учёбы.</string>
+    <string name="learn_reason_forgets">Часто забываете</string>
+    <string name="learn_reason_errors">Много ошибок</string>
+    <string name="learn_reason_slow">Медленные ответы</string>
+    <string name="learn_reason_unstable">Нестабильно</string>
+    <string name="learn_reason_confused">Путаете с другими</string>
+    <string name="learn_reason_recent">Недавние ошибки</string>
+</resources>

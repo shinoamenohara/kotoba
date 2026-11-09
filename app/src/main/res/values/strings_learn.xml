@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Learn tab -->
+    <string name="learn_title">Learn</string>
+    <string name="learn_daily_title">Daily session</string>
+    <string name="learn_daily_sub">Reviews and new words, mixed for you</string>
+    <string name="learn_daily_done">All caught up! Start anyway to practise.</string>
+    <string name="learn_daily_start">Start daily session</string>
+    <string name="learn_due">to review</string>
+    <string name="learn_new">new today</string>
+    <string name="learn_tile_new">New words</string>
+    <string name="learn_tile_review">SRS review</string>
+    <string name="learn_tile_flashcards">Flashcards</string>
+    <string name="learn_tile_weak">Weak words</string>
+    <string name="learn_quick_title">Quick review</string>
+    <string name="learn_quick_minutes">%1$d min</string>
+    <string name="learn_mixed_sub">Exercise types adapt to how well you know each word</string>
+    <string name="learn_exercises">Exercises</string>
+    <string name="learn_decks">Your decks</string>
+    <string name="learn_deck_stats">%1$d words · %2$d due · %3$d new</string>
+    <string name="learn_study">Study</string>
+    <string name="learn_no_words_title">No words yet</string>
+    <string name="learn_no_words_msg">Add words in the Library or import a deck to start learning.</string>
+
+    <!-- Session modes -->
+    <string name="learn_mode_daily">Daily session</string>
+    <string name="learn_mode_new">New words</string>
+    <string name="learn_mode_review">Review</string>
+    <string name="learn_mode_weak">Weak words</string>
+    <string name="learn_mode_flashcards">Flashcards</string>
+    <string name="learn_mode_exercise">Exercise</string>
+    <string name="learn_mode_mixed">Mixed practice</string>
+
+    <!-- Exercise names -->
+    <string name="learn_ex_term_translation">Word → translation</string>
+    <string name="learn_ex_translation_term">Translation → word</string>
+    <string name="learn_ex_context_card">Context card</string>
+    <string name="learn_ex_audio_card">Audio card</string>
+    <string name="learn_ex_choice">Multiple choice</string>
+    <string name="learn_ex_typing">Typing</string>
+    <string name="learn_ex_listening">Listening</string>
+    <string name="learn_ex_spelling">Spelling</string>
+    <string name="learn_ex_scramble">Word scramble</string>
+    <string name="learn_ex_fill">Fill in the blank</string>
+    <string name="learn_ex_builder">Sentence builder</string>
+    <string name="learn_ex_matching">Matching</string>
+    <string name="learn_ex_context_quiz">Context quiz</string>
+    <string name="learn_ex_translation">Sentence translation</string>
+    <string name="learn_ex_pronunciation">Pronunciation</string>
+
+    <!-- Instructions -->
+    <string name="learn_ins_flash_term">Do you remember the meaning?</string>
+    <string name="learn_ins_flash_translation">Recall the word</string>
+    <string name="learn_ins_flash_context">Which word fits the sentence?</string>
+    <string name="learn_ins_flash_audio">Listen and recall the word</string>
+    <string name="learn_ins_choice">Choose the translation</string>
+    <string name="learn_ins_reverse_choice">Choose the word</string>
+    <string name="learn_ins_typing">Type the word</string>
+    <string name="learn_ins_listening">What do you hear?</string>
+    <string name="learn_ins_spelling">Spell the word you hear</string>
+    <string name="learn_ins_scramble">Put the letters in order</string>
+    <string name="learn_ins_fill">Fill in the blank</string>
+    <string name="learn_ins_builder">Build the sentence</string>
+    <string name="learn_ins_matching">Match words with translations</string>
+    <string name="learn_ins_context">What does the highlighted word mean?</string>
+    <string name="learn_ins_translation">Translate the sentence</string>
+    <string name="learn_ins_pronunciation">Say the word out loud</string>
+    <string name="learn_ins_quick">Know it?</string>
+
+    <!-- Flashcards -->
+    <string name="learn_show_answer">Show answer</string>
+    <string name="learn_tap_to_flip">Tap the card to flip</string>
+    <string name="learn_tap_to_replay">Tap to listen again</string>
+    <string name="learn_more_info">More info</string>
+    <string name="learn_examples">Examples</string>
+    <string name="learn_synonyms">Synonyms</string>
+    <string name="learn_antonyms">Antonyms</string>
+    <string name="learn_forms">Forms</string>
+    <string name="learn_source">From: %1$s</string>
+    <string name="learn_rate_again">Again</string>
+    <string name="learn_rate_hard">Hard</string>
+    <string name="learn_rate_good">Good</string>
+    <string name="learn_rate_easy">Easy</string>
+
+    <!-- Exercises -->
+    <string name="learn_check">Check</string>
+    <string name="learn_dont_know">I don\'t know</string>
+    <string name="learn_slow">Play slowly</string>
+    <string name="learn_type_instead">Type instead</string>
+    <string name="learn_type_hint">Type your answer</string>
+    <string name="learn_type_hint_ja">Kanji or kana</string>
+    <string name="learn_type_hint_zh">Characters or pinyin</string>
+    <string name="learn_hint_letter">Hint: next letter</string>
+    <string name="learn_reveal">Reveal</string>
+    <string name="learn_builder_uses">Uses: %1$s</string>
+    <string name="learn_translation_hint">Your translation</string>
+    <string name="learn_ai_check">Check with AI</string>
+    <string name="learn_ai_checking">AI is checking…</string>
+    <string name="learn_ai_failed">AI check failed — compare with the reference instead.</string>
+    <string name="learn_no_reference">No reference translation for this sentence.</string>
+    <string name="learn_self_assess">How did you do?</string>
+    <string name="learn_self_wrong">Wrong</string>
+    <string name="learn_self_almost">Almost</string>
+    <string name="learn_self_right">Correct</string>
+    <string name="learn_pron_speak">Speak</string>
+    <string name="learn_pron_tap">Tap the microphone and say the word</string>
+    <string name="learn_pron_listening">Listening…</string>
+    <string name="learn_pron_heard">Heard: “%1$s”</string>
+    <string name="learn_pron_nothing">Didn\'t catch that</string>
+    <string name="learn_pron_tries">Tries left: %1$d</string>
+    <string name="learn_pron_unavailable">Speech recognition isn\'t available on this device.</string>
+    <string name="learn_pron_denied">Microphone access was denied.</string>
+    <string name="learn_pron_self">Say it out loud, then rate yourself</string>
+
+    <!-- Feedback -->
+    <string name="learn_fb_correct">Correct!</string>
+    <string name="learn_fb_close">Almost!</string>
+    <string name="learn_fb_wrong">Not quite</string>
+    <string name="learn_fb_your_answer">Your answer: %1$s</string>
+    <string name="learn_xp_plus">+%1$d XP</string>
+    <string name="learn_combo">🔥 %1$d</string>
+    <string name="learn_finish">Finish session</string>
+
+    <!-- Quick review -->
+    <string name="learn_quick_done">%1$d answered · %2$d known</string>
+    <string name="learn_quick_tap">Tap to see the translation · swipe → know, ← don\'t</string>
+    <string name="learn_quick_know">Know</string>
+    <string name="learn_quick_dont_know">Don\'t know</string>
+
+    <!-- Empty -->
+    <string name="learn_empty_title">Nothing to study here</string>
+    <string name="learn_empty_msg">You\'re all caught up. Add new words or try another mode.</string>
+    <string name="learn_empty_weak_title">No weak words</string>
+    <string name="learn_empty_weak_msg">Great job — nothing is giving you trouble right now.</string>
+
+    <!-- Summary -->
+    <string name="learn_sum_header">Session complete</string>
+    <string name="learn_sum_title">Nice work!</string>
+    <string name="learn_sum_title_empty">Session ended</string>
+    <string name="learn_sum_minutes">%1$d min of study</string>
+    <string name="learn_sum_goal">Daily goal reached!</string>
+    <string name="learn_sum_goal_sub">Keep your streak going tomorrow.</string>
+    <string name="learn_sum_answered">Answered</string>
+    <string name="learn_sum_accuracy">Accuracy</string>
+    <string name="learn_sum_xp">XP earned</string>
+    <string name="learn_sum_combo">Best combo</string>
+    <string name="learn_sum_achievements">New achievements</string>
+    <string name="learn_sum_up">Improved (%1$d)</string>
+    <string name="learn_sum_down">Needs work (%1$d)</string>
+    <string name="learn_sum_more">Continue learning</string>
+
+    <!-- Weak words -->
+    <string name="learn_weak_title">Weak words</string>
+    <string name="learn_weak_intro">Words you forget, confuse or answer slowly. A short focused session fixes most of them.</string>
+    <string name="learn_weak_confused">Often confused</string>
+    <string name="learn_weak_words">Weak words (%1$d)</string>
+    <string name="learn_weak_practice">Practice weak words (%1$d)</string>
+    <string name="learn_weak_none">Weak words will appear here as you study.</string>
+    <string name="learn_reason_forgets">Forgotten often</string>
+    <string name="learn_reason_errors">Many mistakes</string>
+    <string name="learn_reason_slow">Slow answers</string>
+    <string name="learn_reason_unstable">Unstable</string>
+    <string name="learn_reason_confused">Confused with others</string>
+    <string name="learn_reason_recent">Recent mistakes</string>
+</resources>
