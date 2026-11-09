@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kotoba</string>
+
+    <string name="nav_home">Главная</string>
+    <string name="nav_learn">Обучение</string>
+    <string name="nav_library">Библиотека</string>
+    <string name="nav_stats">Статистика</string>
+    <string name="nav_tutor">AI-тьютор</string>
+
+    <string name="action_back">Назад</string>
+    <string name="action_listen">Прослушать</string>
+    <string name="action_save">Сохранить</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="action_delete">Удалить</string>
+    <string name="action_edit">Изменить</string>
+    <string name="action_add">Добавить</string>
+    <string name="action_close">Закрыть</string>
+    <string name="action_done">Готово</string>
+    <string name="action_continue">Продолжить</string>
+    <string name="action_retry">Повторить</string>
+    <string name="action_start">Начать</string>
+    <string name="action_search">Поиск</string>
+    <string name="action_settings">Настройки</string>
+    <string name="action_import">Импорт</string>
+    <string name="action_export">Экспорт</string>
+    <string name="action_favorite">В избранное</string>
+    <string name="action_skip">Пропустить</string>
+    <string name="action_ok">ОК</string>
+    <string name="loading">Загрузка…</string>
+    <string name="error_generic">Что-то пошло не так: %1$s</string>
+    <string name="ai_not_configured">AI не настроен. Добавьте API-ключ в Настройки → AI.</string>
+
+    <string name="mastery_new">Новое</string>
+    <string name="mastery_learning">Изучается</string>
+    <string name="mastery_familiar">Знакомое</string>
+    <string name="mastery_mastered">Выучено</string>
+
+    <string name="category_everyday">Повседневное</string>
+    <string name="category_business">Бизнес</string>
+    <string name="category_technology">Технологии</string>
+    <string name="category_science">Наука</string>
+    <string name="category_literature">Литература</string>
+    <string name="category_nature">Природа</string>
+    <string name="category_food">Еда</string>
+    <string name="category_travel">Путешествия</string>
+    <string name="category_education">Образование</string>
+    <string name="category_entertainment">Развлечения</string>
+    <string name="category_internet_gaming">Интернет и игры</string>
+    <string name="category_other">Другое</string>
+
+    <string name="achievement_first_word_title">Первый шаг</string>
+    <string name="achievement_first_word_desc">Изучите первое слово</string>
+    <string name="achievement_words_100_title">Первые 100 слов</string>
+    <string name="achievement_words_100_desc">Изучите 100 слов</string>
+    <string name="achievement_words_500_title">Коллекционер слов</string>
+    <string name="achievement_words_500_desc">Изучите 500 слов</string>
+    <string name="achievement_mastered_100_title">Прочная сотня</string>
+    <string name="achievement_mastered_100_desc">Выучите 100 слов</string>
+    <string name="achievement_mastered_1000_title">Тысяча выученных</string>
+    <string name="achievement_mastered_1000_desc">Выучите 1000 слов</string>
+    <string name="achievement_streak_7_title">Неделя в огне</string>
+    <string name="achievement_streak_7_desc">Занимайтесь 7 дней подряд</string>
+    <string name="achievement_streak_30_title">Привычка</string>
+    <string name="achievement_streak_30_desc">Занимайтесь 30 дней подряд</string>
+    <string name="achievement_streak_100_title">Неудержимый</string>
+    <string name="achievement_streak_100_desc">Занимайтесь 100 дней подряд</string>
+    <string name="achievement_reviews_100_title">Повторение — мать учения</string>
+    <string name="achievement_reviews_100_desc">Сделайте 100 повторений</string>
+    <string name="achievement_reviews_1000_title">Машина повторений</string>
+    <string name="achievement_reviews_1000_desc">Сделайте 1000 повторений</string>
+    <string name="achievement_combo_25_title">Мастер комбо</string>
+    <string name="achievement_combo_25_desc">25 правильных ответов подряд</string>
+    <string name="achievement_category_mastered_title">Тема покорена</string>
+    <string name="achievement_category_mastered_desc">Выучите все слова категории</string>
+    <string name="achievement_deck_completed_title">Колода пройдена</string>
+    <string name="achievement_deck_completed_desc">Выучите все слова колоды</string>
+    <string name="achievement_first_book_title">Книжный червь</string>
+    <string name="achievement_first_book_desc">Откройте первую книгу</string>
+    <string name="achievement_first_manga_title">Режим отаку</string>
+    <string name="achievement_first_manga_desc">Прочитайте первую страницу манги</string>
+    <string name="achievement_first_import_title">Переезд</string>
+    <string name="achievement_first_import_desc">Импортируйте колоду или словарь</string>
+    <string name="achievement_ai_tutor_title">Любимчик учителя</string>
+    <string name="achievement_ai_tutor_desc">Поговорите с AI-тьютором</string>
+    <string name="achievement_polyglot_title">Полиглот</string>
+    <string name="achievement_polyglot_desc">Изучайте слова на 3 языках</string>
+
+    <string name="quest_weekly_reviews">200 повторений за неделю</string>
+    <string name="quest_weekly_new_words">30 новых слов за неделю</string>
+    <string name="quest_weekly_goal_days">Цель дня выполнена 5 дней</string>
+    <string name="quest_weekly_minutes">60 минут занятий за неделю</string>
+    <string name="quest_daily_combo">Испытание дня: комбо из 15 ответов</string>
+</resources>

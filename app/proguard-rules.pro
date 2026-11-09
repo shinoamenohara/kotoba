@@ -1,0 +1,8 @@
+-keepattributes *Annotation*, InnerClasses, Signature
+-keep,includedescriptorclasses class app.kotoba.**$$serializer { *; }
+-keepclassmembers class app.kotoba.** { *** Companion; }
+-keepclasseswithmembers class app.kotoba.** { kotlinx.serialization.KSerializer serializer(...); }
+-dontwarn com.gemalto.jp2.**
+-dontwarn org.bouncycastle.**
+-dontwarn org.slf4j.**
+-keep class com.github.luben.zstd.** { *; }

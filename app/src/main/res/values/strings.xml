@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kotoba</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_learn">Learn</string>
+    <string name="nav_library">Library</string>
+    <string name="nav_stats">Stats</string>
+    <string name="nav_tutor">AI Tutor</string>
+
+    <!-- Common actions -->
+    <string name="action_back">Back</string>
+    <string name="action_listen">Listen</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_add">Add</string>
+    <string name="action_close">Close</string>
+    <string name="action_done">Done</string>
+    <string name="action_continue">Continue</string>
+    <string name="action_retry">Retry</string>
+    <string name="action_start">Start</string>
+    <string name="action_search">Search</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_import">Import</string>
+    <string name="action_export">Export</string>
+    <string name="action_favorite">Favorite</string>
+    <string name="action_skip">Skip</string>
+    <string name="action_ok">OK</string>
+    <string name="loading">Loading…</string>
+    <string name="error_generic">Something went wrong: %1$s</string>
+    <string name="ai_not_configured">AI is not configured. Add an API key in Settings → AI.</string>
+
+    <!-- Mastery -->
+    <string name="mastery_new">New</string>
+    <string name="mastery_learning">Learning</string>
+    <string name="mastery_familiar">Familiar</string>
+    <string name="mastery_mastered">Mastered</string>
+
+    <!-- Categories -->
+    <string name="category_everyday">Everyday</string>
+    <string name="category_business">Business</string>
+    <string name="category_technology">Technology</string>
+    <string name="category_science">Science</string>
+    <string name="category_literature">Literature</string>
+    <string name="category_nature">Nature</string>
+    <string name="category_food">Food</string>
+    <string name="category_travel">Travel</string>
+    <string name="category_education">Education</string>
+    <string name="category_entertainment">Entertainment</string>
+    <string name="category_internet_gaming">Internet &amp; Gaming</string>
+    <string name="category_other">Other</string>
+
+    <!-- Achievements -->
+    <string name="achievement_first_word_title">First step</string>
+    <string name="achievement_first_word_desc">Study your first word</string>
+    <string name="achievement_words_100_title">First 100 words</string>
+    <string name="achievement_words_100_desc">Study 100 words</string>
+    <string name="achievement_words_500_title">Word collector</string>
+    <string name="achievement_words_500_desc">Study 500 words</string>
+    <string name="achievement_mastered_100_title">Solid hundred</string>
+    <string name="achievement_mastered_100_desc">Master 100 words</string>
+    <string name="achievement_mastered_1000_title">Thousand mastered</string>
+    <string name="achievement_mastered_1000_desc">Master 1000 words</string>
+    <string name="achievement_streak_7_title">Week on fire</string>
+    <string name="achievement_streak_7_desc">Study 7 days in a row</string>
+    <string name="achievement_streak_30_title">Habit formed</string>
+    <string name="achievement_streak_30_desc">Study 30 days in a row</string>
+    <string name="achievement_streak_100_title">Unstoppable</string>
+    <string name="achievement_streak_100_desc">Study 100 days in a row</string>
+    <string name="achievement_reviews_100_title">Repetition is key</string>
+    <string name="achievement_reviews_100_desc">Complete 100 reviews</string>
+    <string name="achievement_reviews_1000_title">Review machine</string>
+    <string name="achievement_reviews_1000_desc">Complete 1000 reviews</string>
+    <string name="achievement_combo_25_title">Combo master</string>
+    <string name="achievement_combo_25_desc">Answer 25 in a row correctly</string>
+    <string name="achievement_category_mastered_title">Topic conquered</string>
+    <string name="achievement_category_mastered_desc">Master every word of a category</string>
+    <string name="achievement_deck_completed_title">Deck completed</string>
+    <string name="achievement_deck_completed_desc">Master every word of a deck</string>
+    <string name="achievement_first_book_title">Bookworm</string>
+    <string name="achievement_first_book_desc">Open your first book</string>
+    <string name="achievement_first_manga_title">Otaku mode</string>
+    <string name="achievement_first_manga_desc">Read your first manga page</string>
+    <string name="achievement_first_import_title">Moving in</string>
+    <string name="achievement_first_import_desc">Import a deck or dictionary</string>
+    <string name="achievement_ai_tutor_title">Teacher\'s pet</string>
+    <string name="achievement_ai_tutor_desc">Talk to the AI tutor</string>
+    <string name="achievement_polyglot_title">Polyglot</string>
+    <string name="achievement_polyglot_desc">Study words in 3 languages</string>
+
+    <!-- Quests -->
+    <string name="quest_weekly_reviews">Complete 200 reviews this week</string>
+    <string name="quest_weekly_new_words">Learn 30 new words this week</string>
+    <string name="quest_weekly_goal_days">Reach the daily goal 5 days</string>
+    <string name="quest_weekly_minutes">Study 60 minutes this week</string>
+    <string name="quest_daily_combo">Daily challenge: 15-answer combo</string>
+</resources>
