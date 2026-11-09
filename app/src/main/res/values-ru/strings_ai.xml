@@ -103,6 +103,7 @@
     <string name="ai_get_key">Получить ключ</string>
     <string name="ai_connection">Подключение</string>
     <string name="ai_base_url">Базовый URL</string>
+    <string name="ai_base_url_insecure">Не сохранено: используйте https:// или http:// только для сервера в локальной сети.</string>
     <string name="ai_base_url_hint">Оставьте пустым для стандартного адреса; укажите для прокси.</string>
     <string name="ai_base_url_hint_local">Адрес вашего сервера, например http://192.168.1.10:11434/v1 для Ollama.</string>
     <string name="ai_model">Модель</string>

@@ -8,6 +8,7 @@ import app.kotoba.core.model.CardSource
 import app.kotoba.core.model.Category
 import app.kotoba.core.model.NativeLanguage
 import app.kotoba.core.model.StudyLanguage
+import androidx.room.withTransaction
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -65,8 +66,8 @@ class SeedRepository @Inject constructor(
     }.getOrNull()
 
     /** Installs built-in decks for [lang] that aren't installed yet. Returns cards added. */
-    suspend fun install(lang: StudyLanguage, native: NativeLanguage): Int {
-        val seed = load(lang) ?: return 0
+    suspend fun install(lang: StudyLanguage, native: NativeLanguage): Int = db.withTransaction {
+        val seed = load(lang) ?: return@withTransaction 0
         val deckDao = db.deckDao()
         var total = 0
         seed.decks.forEachIndexed { i, d ->
@@ -92,7 +93,7 @@ class SeedRepository @Inject constructor(
             }
             total += cards.addCards(list).added
         }
-        return total
+        total
     }
 
     companion object {

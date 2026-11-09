@@ -1,6 +1,7 @@
 package app.kotoba.core.lang
 
 import app.kotoba.core.db.CardEntity
+import app.kotoba.core.runCatchingCancellable
 import app.kotoba.core.db.KotobaDatabase
 import app.kotoba.core.model.NativeLanguage
 import app.kotoba.core.model.StudyLanguage
@@ -51,7 +52,7 @@ class DictionaryService @Inject constructor(
     private val json: Json,
 ) {
     suspend fun lookup(term: String, lang: StudyLanguage, native: NativeLanguage, sentence: String? = null): LookupResult = coroutineScope {
-        val clean = term.trim().trim { !it.isLetterOrDigit() && it != '\'' && it != '-' }
+        val clean = term.trim().trim { !it.isLetterOrDigit() && !Character.isSurrogate(it) && it != '\'' && it != '-' }
         val existing = db.cardDao().findByTerm(lang.code, clean)
         val translation = async { translator.translate(clean, lang.code, native.code) }
         val sentenceTr = async { sentence?.takeIf { it.isNotBlank() && it != clean }?.let { translator.translate(it, lang.code, native.code).getOrNull() } }
@@ -78,12 +79,12 @@ class DictionaryService @Inject constructor(
     private data class EnglishEntry(val ipa: String, val audio: String, val definitions: List<Definition>, val synonyms: List<String>, val antonyms: List<String>)
 
     private suspend fun englishDictionary(word: String): EnglishEntry? = withContext(Dispatchers.IO) {
-        runCatching {
+        runCatchingCancellable {
             val url = "https://api.dictionaryapi.dev/api/v2/entries/en/".toHttpUrl().newBuilder().addPathSegment(word.lowercase()).build()
             client.newCall(Request.Builder().url(url).get().build()).execute().use { r ->
-                if (!r.isSuccessful) return@runCatching null
+                if (!r.isSuccessful) return@runCatchingCancellable null
                 val entries = json.parseToJsonElement(r.body?.string().orEmpty()).jsonArray
-                val first = entries.firstOrNull()?.jsonObject ?: return@runCatching null
+                val first = entries.firstOrNull()?.jsonObject ?: return@runCatchingCancellable null
                 val phonetics = first["phonetics"]?.jsonArray.orEmpty().map { it.jsonObject }
                 val ipa = first["phonetic"]?.jsonPrimitive?.contentOrNull
                     ?: phonetics.firstNotNullOfOrNull { it["text"]?.jsonPrimitive?.contentOrNull }.orEmpty()

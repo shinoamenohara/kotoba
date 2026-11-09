@@ -6,7 +6,12 @@ import app.kotoba.core.db.DailyActivityEntity
 import app.kotoba.core.srs.LevelInfo
 import app.kotoba.core.srs.XpRules
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -62,9 +67,18 @@ class GamificationRepository @Inject constructor(
     private val activity = db.dailyActivityDao()
     private val achievements = db.achievementDao()
 
-    fun observeProfile(): Flow<GamificationProfile> {
-        val today = time.today()
-        return combine(
+    /** Emits today's epoch day now and again at every local midnight, so open screens roll over. */
+    private fun todayFlow(): Flow<Long> = flow {
+        while (true) {
+            val today = time.today()
+            emit(today)
+            delay((time.startOfDay(today + 1) - time.now()).coerceIn(1_000L, 86_400_000L))
+        }
+    }.distinctUntilChanged()
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    fun observeProfile(): Flow<GamificationProfile> = todayFlow().flatMapLatest { today ->
+        combine(
             activity.observeTotalXp(),
             activity.observeActiveDaysDesc(),
             activity.observeFrom(today - 6),

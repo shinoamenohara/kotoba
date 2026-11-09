@@ -153,7 +153,7 @@ class MangaReaderViewModel @Inject constructor(
                     _ocr.update { it + (index to o) }
                     if (o.blocks.isEmpty()) _events.send(MangaEvent.Message(R.string.manga_no_text))
                 }
-                .onFailure { _events.send(MangaEvent.Message(R.string.manga_ocr_failed, it.message)) }
+                .onFailure { _events.send(MangaEvent.Message(R.string.manga_ocr_failed, it.message.orEmpty())) }
             _recognizing.update { it - index }
         }
     }

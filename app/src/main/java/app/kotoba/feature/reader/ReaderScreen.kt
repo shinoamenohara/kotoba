@@ -363,6 +363,13 @@ private fun ParagraphText(
         val line = l.getLineForVerticalPosition(pos.y)
         if (pos.x < l.getLineLeft(line) - 8 || pos.x > l.getLineRight(line) + 8) return null
         val off = l.getOffsetForPosition(pos)
+        // The nearest cursor position can land on the next word's start; prefer the glyph actually under the finger.
+        val len = l.layoutInput.text.length
+        for (i in intArrayOf(off, off - 1)) {
+            if (i in 0 until len && l.getBoundingBox(i).contains(pos)) {
+                tokens.firstOrNull { it.isWord && i >= it.start && i < it.end }?.let { return it }
+            }
+        }
         return tokens.firstOrNull { it.isWord && off >= it.start && off < it.end }
             ?: tokens.firstOrNull { it.isWord && off - 1 >= it.start && off - 1 < it.end }
     }

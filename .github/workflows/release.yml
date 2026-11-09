@@ -1,0 +1,57 @@
+name: Release APK
+
+# Push a tag like v1.0.0 to build a signed release APK and attach it to the GitHub release.
+# Required repository secrets: KOTOBA_KEYSTORE_BASE64 (base64 of the .jks) and KOTOBA_KEYSTORE_PASSWORD.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag to attach the APK to
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+      HAS_KEY: ${{ secrets.KOTOBA_KEYSTORE_BASE64 != '' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
+      - name: Check signing secrets
+        if: env.HAS_KEY != 'true'
+        run: echo "::notice::KOTOBA_KEYSTORE_BASE64 is not set; skipping the signed build. Upload the APK manually or add the secrets."
+      - uses: actions/setup-java@v4
+        if: env.HAS_KEY == 'true'
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+        if: env.HAS_KEY == 'true'
+      - name: Build signed release APK
+        if: env.HAS_KEY == 'true'
+        env:
+          KOTOBA_KEYSTORE_PASSWORD: ${{ secrets.KOTOBA_KEYSTORE_PASSWORD }}
+          KEYSTORE_B64: ${{ secrets.KOTOBA_KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
+          export KOTOBA_KEYSTORE_FILE="$RUNNER_TEMP/release.jks"
+          ./gradlew :app:testReleaseUnitTest :app:assembleRelease --console=plain
+          for f in app/build/outputs/apk/release/app-*-release.apk; do
+            abi=$(basename "$f" | sed -E "s/app-(.*)-release.apk/\1/")
+            cp "$f" "kotoba-$TAG-$abi.apk"
+          done
+      - name: Attach to release
+        if: env.HAS_KEY == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --title "Kotoba $TAG" --generate-notes
+          gh release upload "$TAG" kotoba-$TAG-*.apk --clobber

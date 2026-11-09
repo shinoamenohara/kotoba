@@ -57,16 +57,33 @@ class ImportRepository @Inject constructor(
         when (ext) {
             "apkg", "colpkg" -> {
                 val work = File(context.cacheDir, "import/${System.currentTimeMillis()}")
-                val input = resolver.openInputStream(uri) ?: throw IOException("Cannot open $name")
-                val pkg = input.use { AnkiPackageReader.unpack(it, work) }
-                val col = AnkiCollectionReader.read(pkg.collectionFile)
-                fromAnki(name, col, pkg.media, pkg.warnings + col.warnings, work)
+                try {
+                    val input = resolver.openInputStream(uri) ?: throw IOException("Cannot open $name")
+                    val pkg = input.use { AnkiPackageReader.unpack(it, work) }
+                    val col = AnkiCollectionReader.read(pkg.collectionFile)
+                    fromAnki(name, col, pkg.media, pkg.warnings + col.warnings, work)
+                } catch (t: Throwable) {
+                    work.deleteRecursively()
+                    throw t
+                }
             }
             else -> {
-                val bytes = resolver.openInputStream(uri)?.use { it.readBytes() } ?: throw IOException("Cannot open $name")
-                parseText(name, bytes.decodeToString(), ext)
+                val bytes = resolver.openInputStream(uri)?.use { readLimited(it) } ?: throw IOException("Cannot open $name")
+                parseText(name, decodeText(bytes), ext)
             }
         }
+    }
+
+    private fun readLimited(input: java.io.InputStream): ByteArray {
+        val out = java.io.ByteArrayOutputStream()
+        val buf = ByteArray(8192)
+        while (true) {
+            val n = input.read(buf)
+            if (n < 0) break
+            out.write(buf, 0, n)
+            if (out.size() > MAX_TEXT_BYTES) throw IOException("File is too large to import")
+        }
+        return out.toByteArray()
     }
 
     fun parseText(name: String, text: String, ext: String = FileKinds.extension(name)): ParsedImport {
@@ -197,7 +214,7 @@ class ImportRepository @Inject constructor(
         fun media(name: String?): String {
             if (name.isNullOrBlank()) return ""
             return mediaUris.getOrPut(name) {
-                val src = parsed.media[name] ?: return@getOrPut null
+                val src = parsed.media[name] ?: parsed.media[Uri.decode(name)] ?: return@getOrPut null
                 val safe = name.replace(Regex("[^\\p{L}\\p{N}._-]"), "_").take(120)
                 val dst = File(mediaDir, safe)
                 runCatching { mediaDir.mkdirs(); src.copyTo(dst, overwrite = true); Uri.fromFile(dst).toString() }.getOrNull()
@@ -288,5 +305,16 @@ class ImportRepository @Inject constructor(
             }
         }
         return ImportReport(added, duplicates, errors, decks = db.deckDao().all().size - decksBefore)
+    }
+
+    companion object {
+        const val MAX_TEXT_BYTES = 32 * 1024 * 1024
+
+        /** UTF-16 (BOM, as written by Excel's "Unicode text") or UTF-8; a UTF-8 BOM is dropped. */
+        fun decodeText(bytes: ByteArray): String = when {
+            bytes.size >= 2 && bytes[0] == 0xFF.toByte() && bytes[1] == 0xFE.toByte() -> String(bytes, 2, bytes.size - 2, Charsets.UTF_16LE)
+            bytes.size >= 2 && bytes[0] == 0xFE.toByte() && bytes[1] == 0xFF.toByte() -> String(bytes, 2, bytes.size - 2, Charsets.UTF_16BE)
+            else -> bytes.decodeToString().removePrefix("\uFEFF")
+        }
     }
 }

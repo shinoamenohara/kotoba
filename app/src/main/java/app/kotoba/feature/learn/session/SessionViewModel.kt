@@ -167,6 +167,8 @@ class SessionViewModel @Inject constructor(
                 else chunk.map { c -> SessionStep(listOf(c.id), ExercisePlanner.resolve(ExerciseType.MULTIPLE_CHOICE, traits(c, canOptions))) }
             }
         }
+        // Quick review never needs sentences; skip the per-card lookup and tokenizing for up to 200 cards.
+        if (mode == SessionMode.QUICK) return queue.map { SessionStep(listOf(it.id), ExerciseType.QUICK_REVIEW) }
         return queue.mapIndexed { i, c -> SessionStep(listOf(c.id), ExercisePlanner.exerciseFor(mode, requested, traits(c, canOptions), i + c.reps)) }
     }
 
@@ -208,6 +210,13 @@ class SessionViewModel @Inject constructor(
         }
         val st = steps[index]
         val prepared = withContext(kotlinx.coroutines.Dispatchers.Default) { prepare(index, st) }
+        if (prepared == null) {
+            // Card was deleted mid-session.
+            steps.removeAt(index)
+            persistSteps()
+            showStep(index)
+            return
+        }
         matchingLastAt = time.now()
         matchingRecorded = mutableSetOf()
         _state.update {
@@ -218,9 +227,9 @@ class SessionViewModel @Inject constructor(
         }
     }
 
-    private suspend fun prepare(index: Int, st: SessionStep): PreparedStep {
+    private suspend fun prepare(index: Int, st: SessionStep): PreparedStep? {
         val group = st.cardIds.mapNotNull { cards[it] ?: cardDao.get(it)?.also { c -> cards[c.id] = c } }
-        val card = group.first()
+        val card = group.firstOrNull() ?: return null
         val needsOptions = st.exercise in setOf(
             ExerciseType.MULTIPLE_CHOICE, ExerciseType.REVERSE_MULTIPLE_CHOICE, ExerciseType.LISTENING,
             ExerciseType.FILL_BLANK, ExerciseType.CONTEXT_QUIZ,
@@ -290,7 +299,7 @@ class SessionViewModel @Inject constructor(
         // Show feedback immediately, persist in the background.
         _state.update { it.copy(feedback = Feedback(attempt.correct, attempt.close, step.card, attempt.userAnswer, attempt.note, 0)) }
         viewModelScope.launch {
-            val xp = record(step.card, step.exercise, rating, attempt.correct, attempt.confusedWithCardId, responseMs)
+            val xp = record(step.card, step.exercise, rating, attempt.correct, attempt.confusedWithCardId, responseMs, stepIndex = step.index)
             _state.update { s -> s.copy(feedback = s.feedback?.copy(xp = xp)) }
         }
     }
@@ -346,9 +355,10 @@ class SessionViewModel @Inject constructor(
         confusedWith: Long?,
         responseMs: Long = time.now() - (_state.value.step?.shownAt ?: time.now()),
         requeue: Boolean = true,
+        stepIndex: Int = _state.value.index,
     ): Int = writeLock.withLock {
         // Advance the saved position first so a restored session never re-asks an answered step.
-        if (exercise != ExerciseType.MATCHING) handle[Keys.INDEX] = _state.value.index + 1
+        if (exercise != ExerciseType.MATCHING) handle[Keys.INDEX] = stepIndex + 1
         val combo = if (correct) _state.value.combo + 1 else 0
         val outcome = withContext(NonCancellable) {
             runCatching {
@@ -369,7 +379,7 @@ class SessionViewModel @Inject constructor(
                 val canOptions = cardDao.countAllNow(lang.code) >= 3
                 val again = if (ExercisePlanner.isFlashcard(exercise)) exercise
                 else ExercisePlanner.exerciseFor(mode, requested, traits(outcome.card, canOptions), n + 1)
-                val at = (_state.value.index + 1 + REQUEUE_GAP).coerceAtMost(steps.size)
+                val at = (stepIndex + 1 + REQUEUE_GAP).coerceAtMost(steps.size)
                 steps.add(at, SessionStep(listOf(card.id), again))
                 persistSteps()
             }
@@ -396,7 +406,7 @@ class SessionViewModel @Inject constructor(
     fun gradeTranslation(answer: String) {
         val step = _state.value.step ?: return
         val sentence = step.sentence ?: return
-        if (answer.isBlank()) return
+        if (answer.isBlank() || _state.value.translationGrade.loading) return
         _state.update { it.copy(translationGrade = TranslationGradeUi(loading = true)) }
         viewModelScope.launch {
             val native = settingsRepo.current().nativeLanguage
@@ -413,6 +423,8 @@ class SessionViewModel @Inject constructor(
             }
             ai.completeJson(prompt, TranslationGrade.serializer(), system = AiPrompts.languageGuide(lang))
                 .onSuccess { g ->
+                    // The learner may have skipped ahead while the model was thinking.
+                    if (_state.value.step?.index != step.index) return@onSuccess
                     val ok = g.correct || g.score >= 70
                     val rating = when {
                         !ok -> Rating.AGAIN
@@ -423,7 +435,9 @@ class SessionViewModel @Inject constructor(
                     _state.update { it.copy(translationGrade = TranslationGradeUi()) }
                     submit(Attempt(correct = ok, close = ok && g.score < 90, userAnswer = answer, rating = rating, note = note.ifBlank { null }))
                 }
-                .onFailure { _state.update { it.copy(translationGrade = TranslationGradeUi(failed = true)) } }
+                .onFailure {
+                    if (_state.value.step?.index == step.index) _state.update { it.copy(translationGrade = TranslationGradeUi(failed = true)) }
+                }
         }
     }
 

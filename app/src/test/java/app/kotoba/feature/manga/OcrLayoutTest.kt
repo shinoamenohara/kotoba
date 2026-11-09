@@ -37,4 +37,20 @@ class OcrLayoutTest {
         val top = listOf(line("Hi", 300, 10, 360, 30))
         assertThat(OcrLayout.build(listOf(bottom, top), cjk = false).map { it.text }).containsExactly("Hi", "Bye").inOrder()
     }
+
+    @Test fun `many overlapping bubbles never break ordering`() {
+        // Staggered boxes make a pairwise same-row comparison non-transitive; ordering must still succeed.
+        val raw = (0 until 60).map { i -> listOf(line("w$i", (i * 37) % 500, i * 13, (i * 37) % 500 + 40, i * 13 + 60 + (i % 7) * 15)) }
+        val blocks = OcrLayout.build(raw, cjk = false)
+        assertThat(blocks).hasSize(60)
+        assertThat(blocks.map { it.id }).containsExactlyElementsIn(0 until 60).inOrder()
+    }
+
+    @Test fun `sample size keeps the longest side within the limit`() {
+        assertThat(OcrLayout.sampleSize(1000, 1500, 3000)).isEqualTo(1)
+        assertThat(OcrLayout.sampleSize(3000, 3000, 3000)).isEqualTo(1)
+        assertThat(OcrLayout.sampleSize(4000, 6000, 3000)).isEqualTo(2)
+        assertThat(OcrLayout.sampleSize(8000, 12000, 3000)).isEqualTo(4)
+        assertThat(OcrLayout.sampleSize(0, 0, 3000)).isEqualTo(1)
+    }
 }

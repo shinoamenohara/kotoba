@@ -13,18 +13,18 @@ import app.kotoba.core.model.SrsState
 
 class Converters {
     @TypeConverter fun masteryToString(v: Mastery): String = v.name
-    @TypeConverter fun stringToMastery(v: String): Mastery = Mastery.valueOf(v)
+    @TypeConverter fun stringToMastery(v: String): Mastery = runCatching { Mastery.valueOf(v) }.getOrDefault(Mastery.NEW)
     @TypeConverter fun stateToString(v: SrsState): String = v.name
-    @TypeConverter fun stringToState(v: String): SrsState = SrsState.valueOf(v)
+    @TypeConverter fun stringToState(v: String): SrsState = runCatching { SrsState.valueOf(v) }.getOrDefault(SrsState.NEW)
     @TypeConverter fun exerciseToString(v: ExerciseType): String = v.name
     @TypeConverter fun stringToExercise(v: String): ExerciseType =
         runCatching { ExerciseType.valueOf(v) }.getOrDefault(ExerciseType.QUICK_REVIEW)
     @TypeConverter fun contextSourceToString(v: ContextSource): String = v.name
-    @TypeConverter fun stringToContextSource(v: String): ContextSource = ContextSource.valueOf(v)
+    @TypeConverter fun stringToContextSource(v: String): ContextSource = runCatching { ContextSource.valueOf(v) }.getOrDefault(ContextSource.IMPORT)
     @TypeConverter fun kindToString(v: DocumentKind): String = v.name
-    @TypeConverter fun stringToKind(v: String): DocumentKind = DocumentKind.valueOf(v)
+    @TypeConverter fun stringToKind(v: String): DocumentKind = runCatching { DocumentKind.valueOf(v) }.getOrDefault(DocumentKind.BOOK)
     @TypeConverter fun formatToString(v: DocumentFormat): String = v.name
-    @TypeConverter fun stringToFormat(v: String): DocumentFormat = DocumentFormat.valueOf(v)
+    @TypeConverter fun stringToFormat(v: String): DocumentFormat = runCatching { DocumentFormat.valueOf(v) }.getOrDefault(DocumentFormat.TXT)
 }
 
 @Database(

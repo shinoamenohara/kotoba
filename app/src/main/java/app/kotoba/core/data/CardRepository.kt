@@ -38,7 +38,7 @@ class CardRepository @Inject constructor(
     }
 
     suspend fun delete(card: CardEntity) = cards.delete(card)
-    suspend fun deleteMany(ids: List<Long>) = cards.deleteByIds(ids)
+    suspend fun deleteMany(ids: List<Long>) = db.withTransaction { ids.chunked(500).forEach { cards.deleteByIds(it) } }
     suspend fun setFavorite(id: Long, favorite: Boolean) = cards.setFavorite(id, favorite)
     suspend fun setSuspended(id: Long, suspended: Boolean) = cards.setSuspended(id, suspended)
 
@@ -91,7 +91,7 @@ class CardRepository @Inject constructor(
 
     suspend fun saveDeck(deck: DeckEntity): Long = if (deck.id == 0L) decks.insert(deck) else { decks.update(deck); deck.id }
     suspend fun deleteDeck(deck: DeckEntity, deleteCards: Boolean) = db.withTransaction {
-        if (deleteCards) cards.deleteByIds(cards.forDeck(deck.id).map { it.id })
+        if (deleteCards) cards.forDeck(deck.id).map { it.id }.chunked(500).forEach { cards.deleteByIds(it) }
         decks.delete(deck)
     }
     suspend fun getDeck(id: Long) = decks.get(id)

@@ -111,7 +111,10 @@ class ImportExportViewModel @Inject constructor(
                 )
                 parsed to options
             }.onSuccess { (parsed, options) ->
-                _stage.value = if (parsed.total == 0) ImportStage.Failed("") else ImportStage.Preview(parsed, options)
+                _stage.value = if (parsed.total == 0) {
+                    importer.discard(parsed)
+                    ImportStage.Failed("")
+                } else ImportStage.Preview(parsed, options)
             }.onFailure { _stage.value = ImportStage.Failed(it.message.orEmpty()) }
         }
     }

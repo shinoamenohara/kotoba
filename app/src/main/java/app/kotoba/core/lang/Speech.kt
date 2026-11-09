@@ -4,6 +4,7 @@ import android.content.Context
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
 import app.kotoba.core.model.StudyLanguage
+import app.kotoba.core.runCatchingCancellable
 import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.common.model.RemoteModelManager
 import com.google.mlkit.nl.translate.TranslateLanguage
@@ -32,6 +33,7 @@ class SpeechService @Inject constructor(@ApplicationContext private val context:
     val speaking: StateFlow<Boolean> = _speaking
     var rate: Float = 1f
 
+    @Synchronized
     private fun ensure() {
         if (tts != null) return
         tts = TextToSpeech(context) { status -> ready.complete(status == TextToSpeech.SUCCESS) }.apply {
@@ -40,6 +42,7 @@ class SpeechService @Inject constructor(@ApplicationContext private val context:
                 override fun onDone(utteranceId: String?) { _speaking.value = false }
                 @Deprecated("Deprecated in Java")
                 override fun onError(utteranceId: String?) { _speaking.value = false }
+                override fun onStop(utteranceId: String?, interrupted: Boolean) { _speaking.value = false }
             })
         }
     }
@@ -61,7 +64,7 @@ class SpeechService @Inject constructor(@ApplicationContext private val context:
         }
     }
 
-    fun stop() { tts?.stop() }
+    fun stop() { tts?.stop(); _speaking.value = false }
 
     private fun StudyLanguage.ttsLocale(): Locale = when (this) {
         StudyLanguage.EN -> Locale.US
@@ -83,11 +86,11 @@ class TranslatorService @Inject constructor() {
 
     suspend fun isModelDownloaded(code: String): Boolean {
         val tag = TranslateLanguage.fromLanguageTag(code) ?: return false
-        return runCatching { modelManager.isModelDownloaded(TranslateRemoteModel.Builder(tag).build()).await() }.getOrDefault(false)
+        return runCatchingCancellable { modelManager.isModelDownloaded(TranslateRemoteModel.Builder(tag).build()).await() }.getOrDefault(false)
     }
 
-    suspend fun translate(text: String, from: String, to: String, wifiOnly: Boolean = false): Result<String> = runCatching {
-        if (from == to) return@runCatching text
+    suspend fun translate(text: String, from: String, to: String, wifiOnly: Boolean = false): Result<String> = runCatchingCancellable {
+        if (from == to) return@runCatchingCancellable text
         val src = TranslateLanguage.fromLanguageTag(from) ?: error("Unsupported source language $from")
         val dst = TranslateLanguage.fromLanguageTag(to) ?: error("Unsupported target language $to")
         val translator = mutex.withLock {

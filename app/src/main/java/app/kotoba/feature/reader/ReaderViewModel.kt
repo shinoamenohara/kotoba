@@ -218,7 +218,7 @@ class ReaderViewModel @Inject constructor(
     private fun openLookup(term: String, start: Int, end: Int) {
         val lang = _state.value.language
         val p = _state.value.paragraphs.getOrNull(paragraphIndexFor(start))
-        val sentence = p?.let { segmenter.sentenceAt(it.text, (start - it.start).coerceIn(0, it.text.length - 1), lang) }.orEmpty()
+        val sentence = p?.let { segmenter.sentenceAt(it.text, (start - it.start).coerceIn(0, (it.text.length - 1).coerceAtLeast(0)), lang) }.orEmpty()
         _lookup.value = LookupState(term = term, sentence = sentence, start = start, end = end)
         lookupJob?.cancel()
         lookupJob = viewModelScope.launch {

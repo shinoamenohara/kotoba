@@ -15,6 +15,7 @@ import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonArray
 import kotlinx.serialization.json.putJsonObject
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -46,6 +47,24 @@ class AiException(val kind: AiErrorKind, message: String, val httpCode: Int? = n
 
 /** Connection details passed to a provider; the key never leaves this object/request headers. */
 data class AiEndpoint(val baseUrl: String, val apiKey: String)
+
+private val PRIVATE_HOST = Regex(
+    """localhost|127(\.\d{1,3}){3}|10(\.\d{1,3}){3}|192\.168(\.\d{1,3}){2}|172\.(1[6-9]|2\d|3[01])(\.\d{1,3}){2}|169\.254(\.\d{1,3}){2}|\[?::1]?|.+\.local|.+\.lan""",
+    RegexOption.IGNORE_CASE,
+)
+
+/**
+ * Checks a user-supplied base URL: must be http(s), and cleartext http is only allowed for
+ * loopback/LAN hosts so API keys never travel unencrypted over the internet. Returns the URL without a trailing slash.
+ */
+fun validateBaseUrl(raw: String): String {
+    val url = raw.trim().toHttpUrlOrNull()
+        ?: throw AiException(AiErrorKind.BAD_REQUEST, "Invalid base URL: $raw")
+    if (!url.isHttps && !PRIVATE_HOST.matches(url.host)) {
+        throw AiException(AiErrorKind.BAD_REQUEST, "Base URL must use https (http is only allowed for local network hosts)")
+    }
+    return raw.trim().trimEnd('/')
+}
 
 /**
  * A pluggable LLM backend. Add a provider by implementing this and registering it in [AiProviders];
@@ -231,7 +250,7 @@ class GeminiProvider(private val client: OkHttpClient, private val json: Json) :
             }
         }
         val http = Request.Builder()
-            .url(endpoint.baseUrl.trimEnd('/') + "/models/${request.model}:generateContent")
+            .url(endpoint.baseUrl.trimEnd('/') + "/models/${java.net.URLEncoder.encode(request.model, "UTF-8").replace("+", "%20")}:generateContent")
             .header("x-goog-api-key", endpoint.apiKey)
             .post(body.toString().toRequestBody(JSON_MEDIA)).build()
         val obj = client.execute(http, json)

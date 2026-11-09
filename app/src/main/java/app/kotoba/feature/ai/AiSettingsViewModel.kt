@@ -74,7 +74,10 @@ class AiSettingsViewModel @Inject constructor(
 
     fun selectProvider(id: String) = update { if (it.providerId == id) it else it.copy(providerId = id, model = "", baseUrl = "") }
     fun setModel(model: String) = update { it.copy(model = model.trim()) }
-    fun setBaseUrl(url: String) = update { it.copy(baseUrl = url.trim()) }
+    /** Insecure or malformed URLs are not saved, so the API key can never be sent over plain http to a remote host. */
+    fun setBaseUrl(url: String) {
+        if (BaseUrlPolicy.isAllowed(url)) update { it.copy(baseUrl = url.trim()) }
+    }
     fun setTemperature(t: Double) = update { it.copy(temperature = (Math.round(t * 10) / 10.0).coerceIn(0.0, 2.0)) }
     fun setMaxTokens(v: Int) = update { it.copy(maxOutputTokens = v.coerceIn(64, 32_000)) }
     fun setDailyTokens(v: Int) = update { it.copy(dailyTokenLimit = v.coerceIn(1_000, 100_000_000)) }
