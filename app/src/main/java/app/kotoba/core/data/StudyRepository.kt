@@ -227,8 +227,12 @@ class StudyRepository @Inject constructor(
             ),
         )
 
-        var xp = XpRules.forAnswer(input.correct, wasNew, wasWeak, input.combo)
+        val wasHard = !wasNew && card.difficulty >= XpRules.HARD_DIFFICULTY
         val day = time.today()
+        val event = SeasonalEvents.active(java.time.LocalDate.ofEpochDay(day))
+        var xp = SeasonalEvents.boostedXp(
+            XpRules.forAnswer(input.correct, wasNew, wasWeak, input.combo, wasHard), event, StudyLanguage.fromCode(card.language),
+        )
         val row = activity.get(day) ?: DailyActivityEntity(day)
         val forgotten = card.state == SrsState.REVIEW && input.rating == Rating.AGAIN
         val recovered = card.state == SrsState.RELEARNING && srs.state == SrsState.REVIEW
@@ -261,6 +265,7 @@ class StudyRepository @Inject constructor(
     /** Call when a session ends: checks progress achievements. */
     suspend fun finishSession(answered: Int, correct: Int, xp: Int, bestCombo: Int, durationMs: Long): SessionSummary {
         val unlocked = gamification.checkProgressAchievements(bestCombo)
+        gamification.checkEventBadge()
         return SessionSummary(answered, correct, xp, bestCombo, durationMs, unlocked)
     }
 

@@ -115,14 +115,18 @@ object XpRules {
     const val REVIEW_CORRECT = 5
     const val REVIEW_WRONG = 1
     const val WEAK_WORD_BONUS = 3
+    /** Reviews of words FSRS rates as hard (difficulty ≥ [HARD_DIFFICULTY]). */
+    const val HARD_WORD_BONUS = 2
+    const val HARD_DIFFICULTY = 7.0
     const val COMBO_STEP = 5
     const val COMBO_BONUS = 5
     const val DAILY_GOAL_REWARD = 20
 
-    fun forAnswer(correct: Boolean, wasNew: Boolean, wasWeak: Boolean, combo: Int): Int {
+    fun forAnswer(correct: Boolean, wasNew: Boolean, wasWeak: Boolean, combo: Int, wasHard: Boolean = false): Int {
         if (!correct) return REVIEW_WRONG
         var xp = if (wasNew) NEW_WORD else REVIEW_CORRECT
         if (wasWeak) xp += WEAK_WORD_BONUS
+        if (wasHard && !wasNew) xp += HARD_WORD_BONUS
         if (combo > 0 && combo % COMBO_STEP == 0) xp += COMBO_BONUS
         return xp
     }
