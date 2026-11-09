@@ -154,7 +154,8 @@ class SessionViewModel @Inject constructor(
         }
         if (requested != null && mode == SessionMode.EXERCISE && requested != ExerciseType.MATCHING) {
             // Exercises that need a sentence go first to cards that have one.
-            queue = queue.sortedByDescending { c -> sentenceFor(c) != null }
+            val hasSentence = queue.associate { c -> c.id to (sentenceFor(c) != null) }
+            queue = queue.sortedByDescending { c -> hasSentence[c.id] == true }
         }
         queue.forEach { cards[it.id] = it }
         val canOptions = cardDao.countAllNow(lang.code) >= 3
@@ -258,12 +259,20 @@ class SessionViewModel @Inject constructor(
     /** Self-graded flashcard rating. */
     fun rate(rating: Rating) {
         val step = _state.value.step ?: return
-        if (_state.value.finishing) return
+        if (_state.value.finishing || rateBusy) return
+        rateBusy = true
         viewModelScope.launch {
-            record(step.card, step.exercise, rating, rating != Rating.AGAIN, null)
-            advance()
+            try {
+                record(step.card, step.exercise, rating, rating != Rating.AGAIN, null)
+                advance()
+            } finally {
+                rateBusy = false
+            }
         }
     }
+
+    // Guards against double taps / fast swipes recording one card twice.
+    private var rateBusy = false
 
     /** Quick review swipe: right = know, left = don't know. */
     fun quick(know: Boolean) = rate(if (know) Rating.GOOD else Rating.AGAIN)

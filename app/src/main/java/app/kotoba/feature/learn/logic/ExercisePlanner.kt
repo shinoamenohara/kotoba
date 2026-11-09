@@ -57,7 +57,7 @@ object ExercisePlanner {
 
     /** Second attempt when the primary queue is too small (e.g. exercises before anything was studied). */
     fun fallbackQueueMode(mode: SessionMode): QueueMode? = when (mode) {
-        SessionMode.FLASHCARDS, SessionMode.EXERCISE, SessionMode.MIXED -> QueueMode.ALL
+        SessionMode.FLASHCARDS, SessionMode.EXERCISE, SessionMode.MIXED, SessionMode.QUICK -> QueueMode.ALL
         else -> null
     }
 
